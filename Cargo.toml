@@ -1,0 +1,46 @@
+[package]
+name = "General"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rayon = "1.7"
+crc32fast = "1.3"
+log = "0.4"
+env_logger = "0.10"
+rand = "0.8"
+macroquad = "0.4"
+plotters = "0.3"
+image = "0.24"
+eframe = "0.24"
+egui = "0.24"
+num-complex = "0.4"
+num-bigint = { version = "0.4", features = ["rand"] }
+num-integer = "0.1"
+num-traits = "0.2"
+serde = { version = "1.0.228", features = ["derive"] }
+bincode = "1.3.3"
+primal = "0.3.3"
+dashu = "0.4.0"
+
+[[bin]]
+name = "general"
+path = "General.rs"
+
+[[bin]]
+name = "ariori_molecule"
+path = "ariori_molecule.rs"
+
+[[bin]]
+name = "ariori_decoder"
+path = "ariori_decoder.rs"
+
+[[bin]]
+name = "gen1_seed"
+path = "gen1_seed.rs"
+[[bin]]
+name = "ariori_flux_inverter"
+path = "ariori_flux_inverter.rs"
+[[bin]]
+name = "gen1_exact"
+path = "gen1_exact.rs"
