@@ -10,7 +10,7 @@ The primary verification scripts mathematically generate the structural predicti
 
 1. **`ariori_falsifiable_prediction.py`**: Computes the topological inverse-path interactions to the symmetry-breaking node $X_{17}$, verifying the strict mathematical requirement of a **Normal Neutrino Mass Hierarchy** ($m_1 < m_2 \approx m_3$).
 2. **`ariori_symmetry_test.py`**: Recursively maps Generation 2 and systematically executes Cartesian parity transformations ($T(y) = -y$) against the local point field, counting the exact 22 nodes that structurally mandate lower-energy **Spontaneous CP-Violation**.
-3. **`ariori_mixing_weighted.py`**: Extracts the three generational flavor triangulations, assigns exact Riemann node curvature (degrees), and executes Symmetric Löwdin Orthogonalization to yield exactly $\theta_{12} = 34.54^\circ$ while preserving exact atmospheric maximality.
+3. **`ariori_mixing_corrected.py`**: Extracts the three generational flavor triangulations, assigns verified node degrees from `gen1_full_data.txt` (Theorem 4: $d_A{=}5, d_{C1}{=}4, d_{C2}{=}3, d_{C3}{=}4, d_{C4}{=}3, d_{X17}{=}4$), and executes Symmetric Löwdin Orthogonalization to yield $\theta_{12} = 31.63^\circ$ while preserving exact atmospheric maximality.
 4. **`ariori_four_tests.py`**: A compendium of geometric limits, crucially verifying the macroscopic fractal point dispersion that establishes the $\approx 50\times - 60\times$ non-Newtonian **Dark Matter Density Halo**.
 
 ## Topological Theorems Proofs (Section 2)

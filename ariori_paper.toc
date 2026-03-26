@@ -15,9 +15,9 @@
 \contentsline {section}{\numberline {4}Falsifiable Structural Predictions}{11}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Normal Neutrino Mass Hierarchy}{12}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Spontaneous Geometric CP-Violation}{12}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Topological Solar Mixing ($\theta _{12} = 34.54^\circ $)}{12}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.3}Topological Solar Mixing ($\theta _{12} = 31.63^\circ $)}{12}{subsection.4.3}%
 \contentsline {subsection}{\numberline {4.4}Exact Dark Matter Density Distribution}{13}{subsection.4.4}%
 \contentsline {section}{\numberline {5}Cross-Generational Invariants}{13}{section.5}%
 \contentsline {section}{\numberline {6}Topological Invariants}{14}{section.6}%
 \contentsline {section}{\numberline {7}Open Problems}{14}{section.7}%
-\contentsline {section}{\numberline {8}Conclusion}{14}{section.8}%
+\contentsline {section}{\numberline {8}Conclusion}{15}{section.8}%

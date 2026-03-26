@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.22)  26 MAR 2026 19:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.22)  26 MAR 2026 20:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -878,7 +878,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [12]
 
 [13]
-Overfull \hbox (22.75194pt too wide) in paragraph at lines 629--630
+Overfull \hbox (22.75194pt too wide) in paragraph at lines 633--634
 \T1/cmr/m/n/12 The Vesica Pis-cis construction---the unique min-i-mal zero-para
 meter compass-and-straightedge
  []
@@ -893,13 +893,13 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `ariori_paper.out' has not changed.
-(rerunfilecheck)             Checksum: B50177D91C189146540FCC273E8A94DA;3648.
+(rerunfilecheck)             Checksum: 54C2A83E7F06045DD8BF76BCE77DA39A;3648.
  ) 
 Here is how much of TeX's memory you used:
- 21905 strings out of 473529
- 402675 string characters out of 5714773
+ 21907 strings out of 473529
+ 402733 string characters out of 5714773
  780476 words of memory out of 5000000
- 44671 multiletter control sequences out of 15000+600000
+ 44673 multiletter control sequences out of 15000+600000
  582793 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,12n,91p,1185b,696s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -933,9 +933,9 @@ fb><C:/Users/thefa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 onts/cm/cmsy10.pfb><C:/Users/thefa/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmsy8.pfb><C:/Users/thefa/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on ariori_paper.pdf (15 pages, 399176 bytes).
+Output written on ariori_paper.pdf (15 pages, 401373 bytes).
 PDF statistics:
- 872 PDF objects out of 1000 (max. 8388607)
+ 876 PDF objects out of 1000 (max. 8388607)
  86 named destinations out of 1000 (max. 500000)
  197 words of extra memory for PDF output out of 10000 (max. 10000000)
 

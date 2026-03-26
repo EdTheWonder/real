@@ -542,20 +542,24 @@ Parsing the local subset array of the completely synthesized Generation 2 constr
 
 \textbf{Prediction:} The fundamental vacuum strictly conserves parity. However, non-zero reactor mixing ($\theta_{13} > 0^\circ$) and macroscopic CP-Violation emerge dynamically strictly as a function of discrete spatial fragmentation in the lower-energy localizations. 
 
-\subsection{Topological Solar Mixing ($\theta_{12} = 34.54^\circ$)}
-Assuming flavor eigenstates embed geometrically across the subset array elements, establishing their base vectors $\vec{v}$ depends entirely on topological weight (node degree representing intrinsic geometric charge or curvature).
+\subsection{Topological Solar Mixing ($\theta_{12} = 31.63^\circ$)}
+Assuming flavor eigenstates embed geometrically across the subset array elements, establishing their base vectors $\vec{v}$ depends entirely on topological weight (node degree: the number of atomic lines touching that node, as established in Theorem~4).
 
 \textbf{Methodology:}
-Deriving the pure adjacency connections across the internal $E_{1}$ edges classifies the central node degrees as $\{d_A = 5, d_{C_1} = 3, d_{C_2} = 2, d_{C_3} = 3, d_{C_4} = 2, d_{X_{17}} = 2\}$. We populate three pure 6-dimensional vectors aligning with $[A, C_1, C_2, C_3, C_4, X_{17}]$ for the three generational subsets:
+Counting atomic line contacts directly from the 21 edges in the Rust engine output (see \texttt{gen1\_full\_data.txt}) yields the verified degree sequence for the triangle-participating nodes: $\{d_A = 5,\; d_{C_1} = 4,\; d_{C_2} = 3,\; d_{C_3} = 4,\; d_{C_4} = 3,\; d_{X_{17}} = 4\}$. We populate three 6-dimensional vectors aligning with $[A, C_1, C_2, C_3, C_4, X_{17}]$ for the three generational triangles:
 \begin{align*}
-\vec{v}_1 &= [5, 0, 2, 0, 2, 0] \quad (\text{For } \Delta_1) \\
-\vec{v}_2 &= [5, 3, 0, 0, 0, 2] \quad (\text{For } \Delta_2) \\
-\vec{v}_3 &= [5, 0, 0, 3, 0, 2] \quad (\text{For } \Delta_3)
+\vec{v}_1 &= [5, 0, 3, 0, 3, 0] \quad (\text{For } \Delta_1:\; A, C_2, C_4) \\
+\vec{v}_2 &= [5, 4, 0, 0, 0, 4] \quad (\text{For } \Delta_2:\; A, C_1, X_{17}) \\
+\vec{v}_3 &= [5, 0, 0, 4, 0, 4] \quad (\text{For } \Delta_3:\; A, C_3, X_{17})
 \end{align*}
-Upon unit normalization $\hat{v}_i = \vec{v}_i / \|\vec{v}_i\|$, we compute the explicit symmetric geometric overlap matrix mapping state overlaps via standard inner products $S_{ij} = \hat{v}_i \cdot \hat{v}_j$. Applying Symmetric L\"owdin Orthogonalization to the overlap yields an unambiguous geometric rotation operator $U = S^{-1/2}$.
+Upon unit normalization $\hat{v}_i = \vec{v}_i / \|\vec{v}_i\|$, we compute the symmetric geometric overlap matrix $S_{ij} = \hat{v}_i \cdot \hat{v}_j$, yielding:
+\[
+S = \begin{pmatrix} 1 & 0.5050 & 0.5050 \\ 0.5050 & 1 & 0.7193 \\ 0.5050 & 0.7193 & 1 \end{pmatrix}
+\]
+The equality $S_{12} = S_{13}$ is forced by the exact reflection symmetry between $C_1$ and $C_3$ (both degree 4). Diagonalizing $S$ via Symmetric L\"owdin Orthogonalization yields the mixing rotation $U = S^{-1/2}$.
 
-\textbf{Prediction:} The exact computation geometrically locks the $3{\times}3$ Solar mixing probability $P_{12}$ to yield $\sin^2\theta_{12} = 0.3215$, corresponding to the physical solar angle $\theta_{12} = 34.54^\circ$, while the exact reflection symmetry between equations $\vec{v}_2$ and $\vec{v}_3$ mandates pure atmospheric maximality ($\theta_{23} = 45^\circ$). \\
-\textbf{Falsification:} Global fits narrowing strictly away from the geometric probability $\theta_{12} \sim 34.5^\circ$.
+\textbf{Prediction:} The corrected computation yields $\sin^2\theta_{12} = 0.2751$, corresponding to the solar angle $\theta_{12} = 31.63^\circ$. The reflection symmetry between $\vec{v}_2$ and $\vec{v}_3$ mandates exact atmospheric maximality ($\theta_{23} = 45^\circ$). The tree-level reactor angle is $\theta_{13} = 0^\circ$; non-zero $\theta_{13}$ requires Generation~2 symmetry-breaking corrections (Section~4.2). \\
+\textbf{Falsification:} Experimental convergence excluding $\sin^2\theta_{12} \approx 0.275$. The current NuFIT~5.2 best fit is $\sin^2\theta_{12} = 0.304$ ($\theta_{12} = 33.4^\circ$), a 9.5\% deviation that may be attributable to higher-generation radiative corrections.
 
 \subsection{Exact Dark Matter Density Distribution}
 Macroscopic intersection bounds functionally abandon classical distance approximations.
