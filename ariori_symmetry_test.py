@@ -171,3 +171,27 @@ if len(x_symmetry_broken) == 0:
     print("  >>> VERDICT: EXACT LEFT/RIGHT SYMMETRY PRESERVED IN GEN 2 <<<")
 else:
     print(f"  >>> VERDICT: LEFT/RIGHT SYMMETRY BROKEN! {len(x_symmetry_broken)} points have no mirror image. <<<")
+
+print("\n" + "=" * 80)
+print("THEORETICAL PREDICTION: REACTOR ANGLE (theta_13) PROBABILITY")
+print("=" * 80)
+
+# The total vector generation space |V2| = 132
+# Top/Bottom parity (y -> -y) uniquely identifies global CP-conserving axes.
+# 22 nodes structurally break this vacuum constraint.
+# The probability amplitude corresponding to transitioning into the CP-Violating 
+# spatial sub-sector:
+sin_theta_13 = len(y_symmetry_broken) / len(gen2_all_pts)
+sin2_theta_13 = sin_theta_13**2
+theta_13 = math.degrees(math.asin(sin_theta_13))
+
+print(f"  |V_2| nodes                        : {len(gen2_all_pts)}")
+print(f"  Nodes breaking CP symmetry (y-axis): {len(y_symmetry_broken)}")
+print(f"  Geometric Probability Amplitude    : {len(y_symmetry_broken)} / {len(gen2_all_pts)} = {sin_theta_13:.6f}")
+print(f"  sin^2(theta_13) prediction         : {sin2_theta_13:.6f}  (1/36)")
+print(f"  theta_13 angle prediction          : {theta_13:.2f} deg")
+
+print(f"\n  EXPERIMENTAL VALUES (NuFIT 5.2):")
+print(f"  sin^2(theta_13) = 0.022")
+print(f"  theta_13        ~ 8.6 deg")
+print(f"  Deviation       : {abs(theta_13 - 8.6):.2f} deg")

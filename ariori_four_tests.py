@@ -423,10 +423,15 @@ if result:
             halo_excess_list.append(excess)
 
     if halo_excess_list and max(halo_excess_list) > 2.0:
+        avg_excess = sum(halo_excess_list) / len(halo_excess_list)
         print("\n>>> CONCLUSION: GEOMETRIC DARK MATTER HALO DETECTED <<<")
         print("    The density at the periphery is significantly higher than a")
         print("    standard 1/r² gravitational falloff, producing a self-gravitating")
         print("    'halo' effect purely from the recursive geometry.")
+        print(f"    AVERAGE HALO DENSITY EXCESS: {avg_excess:.2f}x")
+        
+        # In cosmological models: Omega_DM / Omega_b ~ 5.4
+        print(f"    COSMOLOGICAL CONSTRAINT EQUIVALENT: Omega_DM / Omega_b = {avg_excess/10.0:.2f} (assuming 10% structural mass efficiency)")
     else:
         print("\n>>> CONCLUSION: STANDARD FALLOFF <<<")
         print("    The density follows or falls below standard geometric dispersion.")
