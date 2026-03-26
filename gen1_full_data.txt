@@ -1,0 +1,70 @@
+=== THE ATOMIC SPECTRUM (Gen 1 - Strict) ===
+Index  Ratio (L/r)     Length          Freq
+--------------------------------------------
+1      (2 + -sqrt(3))/2                    (100 + -50*sqrt(3))                 x1
+2      (-1 + sqrt(3))/2                    (-50 + 50*sqrt(3))                  x8
+3      1/2                                 50                                  x2
+4      (-1 + sqrt(3))                      (-100 + 100*sqrt(3))                x2
+5      (sqrt(3))/2                         50*sqrt(3)                          x1
+6      1                                   100                                 x7
+
+[STATS]
+Squares: 1
+Points: 17
+Unique Ratios: 6
+
+=== ARIORI GEN 1 SEED (STRICT) - DATA LOG ===
+
+--- ALGEBRAIC TEST ---
+Total Scaffolding Length: (600 + 200*sqrt(3))
+Total Square Edge Length: (-400 + 400*sqrt(3))
+Ratio (Scaff / Edge):   (3 + 2*sqrt(3))/2 (3.232050807569)
+
+Primary Circles: 4
+Unique Arcs: 2
+Total Squares: 1
+Total Points: 17
+
+=== GEN 1 ATOMIC LINES (Point-to-Point) ===
+Idx  Point 1        Point 2        Type                Length               Status
+-----------------------------------------------------------------------------------------
+1    A              X17            Axis                50*sqrt(3)           
+2    X17            B              Axis                (100 + -50*sqrt(3))  
+3    P3             Top            Scaff_P1-P3         100                  
+4    P5             Bot            Scaff_P5-P2         100                  
+5    C3             X17            Scaff_C1-C3         50                   
+6    X17            C1             Scaff_C1-C3         50                   
+7    C2             C4             Scaff_C4-C2         100                  
+8    C2             A              Scaff_P4-C2         100                  
+9    A              C1             Scaff_P4-C2         100                  
+10   C1             P4             Scaff_P4-C2         (-100 + 100*sqrt(3)) 
+11   C4             A              Scaff_P6-C4         100                  
+12   A              C3             Scaff_P6-C4         100                  
+13   C3             P6             Scaff_P6-C4         (-100 + 100*sqrt(3)) 
+14   K              P3             Edge_K-L            (-50 + 50*sqrt(3))   
+15   Top            L              Edge_K-L            (-50 + 50*sqrt(3))   
+16   N              C3             Edge_L-N            (-50 + 50*sqrt(3))   
+17   C1             L              Edge_L-N            (-50 + 50*sqrt(3))   
+18   M              P5             Edge_N-M            (-50 + 50*sqrt(3))   
+19   Bot            N              Edge_N-M            (-50 + 50*sqrt(3))   
+20   M              C2             Edge_M-K            (-50 + 50*sqrt(3))   
+21   C4             K              Edge_M-K            (-50 + 50*sqrt(3))   
+
+
+--- ATOMIC SPECTRUM ---
+
+--- GEOMETRIC ANALYSIS ---
+
+--- LATENT SPECTRUM (Gen 1) ---
+Total Latent Ratios: 8 (from 115 point pairs)
+
+Index  Ratio (L/r)                         Length                              Freq   Type               
+---------------------------------------------------------------------------------------------------------
+1      (3 + -sqrt(3))/2                    (150 + -50*sqrt(3))                 x2      Pure Latent
+2      (sqrt(3))/2                         50*sqrt(3)                          x2      Pure Atomic
+3      1                                   100                                 x12     Pure Atomic
+4      (1 + sqrt(3))/2                     (50 + 50*sqrt(3))                   x8      Pure Latent
+5      sqrt(3)                             100*sqrt(3)                         x13     Pure Latent
+6      2                                   200                                 x8      Pure Latent
+7      (3 + sqrt(3))/2                     (150 + 50*sqrt(3))                  x2      Pure Latent
+8      (1 + sqrt(3))                       (100 + 100*sqrt(3))                 x2      Pure Latent
