@@ -429,9 +429,6 @@ if result:
         print("    standard 1/r² gravitational falloff, producing a self-gravitating")
         print("    'halo' effect purely from the recursive geometry.")
         print(f"    AVERAGE HALO DENSITY EXCESS: {avg_excess:.2f}x")
-        
-        # In cosmological models: Omega_DM / Omega_b ~ 5.4
-        print(f"    COSMOLOGICAL CONSTRAINT EQUIVALENT: Omega_DM / Omega_b = {avg_excess/10.0:.2f} (assuming 10% structural mass efficiency)")
     else:
         print("\n>>> CONCLUSION: STANDARD FALLOFF <<<")
         print("    The density follows or falls below standard geometric dispersion.")
