@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.22)  27 MAR 2026 19:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.22)  27 MAR 2026 19:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -896,28 +896,30 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [13]
 
 [14]
-Overfull \hbox (22.75194pt too wide) in paragraph at lines 635--636
+
+[15]
+Overfull \hbox (22.75194pt too wide) in paragraph at lines 656--657
 \T1/cmr/m/n/12 The Vesica Pis-cis construction---the unique min-i-mal zero-para
 meter compass-and-straightedge
  []
 
 
 
-[15]
+[16]
 
-[16] (ariori_paper.aux)
+[17] (ariori_paper.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `ariori_paper.out' has not changed.
-(rerunfilecheck)             Checksum: 55CC7426D890A27E76DE68C0C3DC65C5;3740.
+(rerunfilecheck)             Checksum: 21BB9A9C4F1B7A8B0FCB41357CF1541C;3958.
  ) 
 Here is how much of TeX's memory you used:
- 21908 strings out of 473529
- 402740 string characters out of 5714773
- 780476 words of memory out of 5000000
- 44673 multiletter control sequences out of 15000+600000
+ 21918 strings out of 473529
+ 402874 string characters out of 5714773
+ 780533 words of memory out of 5000000
+ 44677 multiletter control sequences out of 15000+600000
  582793 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,12n,91p,1185b,696s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -951,9 +953,9 @@ fb><C:/Users/thefa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 onts/cm/cmsy10.pfb><C:/Users/thefa/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmsy8.pfb><C:/Users/thefa/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on ariori_paper.pdf (16 pages, 408122 bytes).
+Output written on ariori_paper.pdf (17 pages, 417803 bytes).
 PDF statistics:
- 881 PDF objects out of 1000 (max. 8388607)
- 87 named destinations out of 1000 (max. 500000)
- 197 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 904 PDF objects out of 1000 (max. 8388607)
+ 93 named destinations out of 1000 (max. 500000)
+ 205 words of extra memory for PDF output out of 10000 (max. 10000000)
 
