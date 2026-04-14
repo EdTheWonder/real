@@ -358,13 +358,13 @@ impl Point {
         Self::new(VesicaNumber::from(x), VesicaNumber::from(y))
     }
 
-    fn distance_sq(&self, other: &Point) -> VesicaNumber {
+    pub fn distance_sq(&self, other: &Point) -> VesicaNumber {
         let dx = self.x.clone() - other.x.clone();
         let dy = self.y.clone() - other.y.clone();
         dx.squared() + dy.squared()
     }
 
-    fn key(&self) -> (VesicaNumber, VesicaNumber) {
+    pub fn key(&self) -> (VesicaNumber, VesicaNumber) {
         (self.x.clone(), self.y.clone())
     }
 
@@ -429,7 +429,7 @@ enum CircleKind {
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Serialize, Deserialize)]
-enum LineType {
+pub enum LineType {
     Axis = 0,
     ScaffP1P3 = 1,
     ScaffP5P2 = 2,
@@ -462,7 +462,7 @@ impl LineType {
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Serialize, Deserialize)]
-enum PointType {
+pub enum PointType {
     A = 0,
     B = 1,
     K = 2,
@@ -534,7 +534,7 @@ pub struct LatentPoint {
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
-enum PointLabel {
+pub enum PointLabel {
     Seed(usize, PointType),                         // seed_id, type
     Intersection(usize, LineType, usize, LineType), // (seed_a, type_a, seed_b, type_b)
     Latent(String),                                 // latent intersection label
@@ -592,7 +592,7 @@ fn decode_seed(seed_id: usize) -> (usize, usize, usize) {
 }
 
 #[derive(Clone, Debug)]
-struct Circle {
+pub struct Circle {
     center: Point,
     radius: VesicaNumber,
     label: String,
@@ -881,14 +881,14 @@ type Phase4ProgressCache = (
 );
 // ======================================================================
 
-struct Gen1Seed {
-    circles: Vec<Circle>,
-    arcs: Vec<Circle>,
-    squares: Vec<SquareConstruction>,
-    all_points: Vec<(Point, PointLabel, usize, usize)>, // (Point, Label, SeedID, Freq)
-    unique_ratios: Vec<(VesicaNumber, VesicaNumber)>,   // (Ratio, Length)
-    ratio_pairs: Vec<Vec<(usize, usize)>>,
-    frequencies: Vec<usize>,
+pub struct Gen1Seed {
+    pub circles: Vec<Circle>,
+    pub arcs: Vec<Circle>,
+    pub squares: Vec<SquareConstruction>,
+    pub all_points: Vec<(Point, PointLabel, usize, usize)>, // (Point, Label, SeedID, Freq)
+    pub unique_ratios: Vec<(VesicaNumber, VesicaNumber)>,   // (Ratio, Length)
+    pub ratio_pairs: Vec<Vec<(usize, usize)>>,
+    pub frequencies: Vec<usize>,
     lines: Vec<(Point, Point, LineType, usize, usize)>,
     data_log: String,
     generation: usize,
@@ -911,7 +911,7 @@ struct Gen1Seed {
 }
 
 impl Gen1Seed {
-    fn new(r_val: f64, max_gen: usize) -> Self {
+    pub fn new(r_val: f64, max_gen: usize) -> Self {
         let r = VesicaNumber::new(BigInt::from(r_val as i64), BigInt::zero(), BigInt::one());
         let mut s = Self {
             circles: Vec::new(),
@@ -2248,6 +2248,18 @@ impl Gen1Seed {
 
         writer.flush().ok();
         println!("Full data log saved to {}", filename);
+
+        // --- NEW: Export canonical unweighted edge list for spectral analysis ---
+        let edge_filename = format!("edges_gen{}.txt", self.generation);
+        if let Ok(mut edge_file) = std::fs::File::create(&edge_filename) {
+            writeln!(edge_file, "u,v").ok();
+            for pairs in &self.ratio_pairs {
+                for &(u, v) in pairs {
+                    writeln!(edge_file, "{},{}", u, v).ok();
+                }
+            }
+            println!("Canonical edge list saved to {}", edge_filename);
+        }
     }
 
     fn run_latent_analysis(&mut self, r: VesicaNumber) {
@@ -3696,14 +3708,14 @@ fn main() -> Result<(), eframe::Error> {
         return Ok(());
     }
     if args.contains(&"--headless".to_string()) {
-        println!("Starting Headless Generation 4 Calculation...");
-        println!("This may take several hours. Progress will be reported every 5000 lines.");
+        println!("Starting Headless Calculation for Generations 1 through 4...");
         let start = std::time::Instant::now();
-        let _seed = Gen1Seed::new(100.0, 4);
-        let duration = start.elapsed();
-
-        println!("Generation 4 complete in {:?}", duration);
-        println!("Output saved to gen4_full_data.txt");
+        for g in 1..=4 {
+            let gen_start = std::time::Instant::now();
+            let _seed = Gen1Seed::new(100.0, g);
+            println!("Gen {} complete in {:?}", g, gen_start.elapsed());
+        }
+        println!("All generations complete in {:?}", start.elapsed());
         return Ok(());
     }
 

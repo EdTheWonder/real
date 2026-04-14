@@ -31,21 +31,3 @@ bytemuck = { version = "1.15", features = ["derive"] }
 [[bin]]
 name = "gen1_seed"
 path = "gen1_seed.rs"
-
-[[bin]]
-name = "ariori_gate"
-path = "ariori_gate.rs"
-
-
-[[bin]]
-name = "ariori_alu"
-path = "ariori_alu.rs"
-
-[[bin]]
-name = "ariori_tsp_sieve"
-path = "ariori_tsp_sieve.rs"
-
-
-[[bin]]
-name = "ariori_matrix_inverter"
-path = "ariori_matrix_inverter.rs"

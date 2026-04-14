@@ -28,27 +28,27 @@ Total Points: 17
 === GEN 1 ATOMIC LINES (Point-to-Point) ===
 Idx  Point 1        Point 2        Type                Length               Status
 -----------------------------------------------------------------------------------------
-1    A              X17            Axis                50*sqrt(3)           
-2    X17            B              Axis                (100 + -50*sqrt(3))  
-3    P3             Top            Scaff_P1-P3         100                  
-4    P5             Bot            Scaff_P5-P2         100                  
-5    C3             X17            Scaff_C1-C3         50                   
-6    X17            C1             Scaff_C1-C3         50                   
-7    C2             C4             Scaff_C4-C2         100                  
-8    C2             A              Scaff_P4-C2         100                  
-9    A              C1             Scaff_P4-C2         100                  
-10   C1             P4             Scaff_P4-C2         (-100 + 100*sqrt(3)) 
-11   C4             A              Scaff_P6-C4         100                  
-12   A              C3             Scaff_P6-C4         100                  
-13   C3             P6             Scaff_P6-C4         (-100 + 100*sqrt(3)) 
-14   K              P3             Edge_K-L            (-50 + 50*sqrt(3))   
-15   Top            L              Edge_K-L            (-50 + 50*sqrt(3))   
-16   N              C3             Edge_L-N            (-50 + 50*sqrt(3))   
-17   C1             L              Edge_L-N            (-50 + 50*sqrt(3))   
-18   M              P5             Edge_N-M            (-50 + 50*sqrt(3))   
-19   Bot            N              Edge_N-M            (-50 + 50*sqrt(3))   
-20   M              C2             Edge_M-K            (-50 + 50*sqrt(3))   
-21   C4             K              Edge_M-K            (-50 + 50*sqrt(3))   
+1    A              X              Axis                50*sqrt(3)           
+2    X              B              Axis                (100 + -50*sqrt(3))  
+3    P5             Bot            Scaff_P1-P3         100                  
+4    P3             Top            Scaff_P5-P2         100                  
+5    C1             X              Scaff_C1-C3         50                   
+6    X              C3             Scaff_C1-C3         50                   
+7    C4             C2             Scaff_C4-C2         100                  
+8    C4             A              Scaff_P4-C2         100                  
+9    A              C3             Scaff_P4-C2         100                  
+10   C3             P6             Scaff_P4-C2         (-100 + 100*sqrt(3)) 
+11   C2             A              Scaff_P6-C4         100                  
+12   A              C1             Scaff_P6-C4         100                  
+13   C1             P4             Scaff_P6-C4         (-100 + 100*sqrt(3)) 
+14   M              P5             Edge_K-L            (-50 + 50*sqrt(3))   
+15   Bot            N              Edge_K-L            (-50 + 50*sqrt(3))   
+16   L              C1             Edge_L-N            (-50 + 50*sqrt(3))   
+17   C3             N              Edge_L-N            (-50 + 50*sqrt(3))   
+18   K              P3             Edge_N-M            (-50 + 50*sqrt(3))   
+19   Top            L              Edge_N-M            (-50 + 50*sqrt(3))   
+20   K              C4             Edge_M-K            (-50 + 50*sqrt(3))   
+21   C2             M              Edge_M-K            (-50 + 50*sqrt(3))   
 
 
 --- ATOMIC SPECTRUM ---

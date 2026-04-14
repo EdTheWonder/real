@@ -27,3 +27,17 @@ The underlying foundation of the $17$-point network is computationally verified 
 
 ---
 *Note: This repository contains no heuristic algorithms or data-fitting approximations. It exists solely to allow independent verification of the exact geometric consequences mandated by the framework.*
+
+## AI Developer Handoff ⚠️
+**CRITICAL INSTRUCTIONS FOR FUTURE LLM/AI AGENTS WORKING ON THIS REPOSITORY:**
+
+If you are an AI reading this repository to continue work, **YOU MUST START BY READING `ariori_paper.tex`**. 
+
+**DO NOT** generate or invent mapping analogies (e.g. "We need Gen 3 for the Muon" or "We need Gen 2 for $SU(3)$"). You will break the strict zero-parameter constraints of the theory. The framework is already fully mapped, and it behaves differently than standard fractal cosmological expansions:
+
+1. **Everything is in Gen 1:** The entire structural inventory of the Standard Model—all 12 fermions, all 12 gauge bosons, and the Higgs scalar—is mapped and mathematically isolated **entirely within the 17-point discrete topology of Generation 1**. 
+2. **Fermion Mapping (Section 3.2):** The 3 Generations of matter map strictly to the 3 internal fundamental cycles ($\Delta_1$: stable, $\Delta_2$: Higgs-anchored, $\Delta_3$: Higgs-anchored) inside Gen 1. The masses are scalar projections of the topological interaction depth to the Higgs node ($X_{17}$), not the emergence of macroscopic layers.
+3. **$SU(3)$ Mapping (Section 9.2):** The Strong Force generators do not require iterating to a geometric hexagon. The 8 degrees of freedom are perfectly contained within the 8 degree-2 boundary nodes of Gen 1 ($K, L, M, N, \text{Top}, \text{Bot}, P_3, P_5$). The 6 internal edges connecting them form the 6 Lie root vectors.
+4. **No Free Parameters:** You are not allowed to input *any* physics constants by hand into these scripts. The lengths, limits, mixing angles, and kinematic matrices must emerge directly from the raw Euclidean point data produced by `gen1_seed.rs` and its Python equivalents. 
+
+**Your Role:** Extrapolate, polish, and prove the existing geometric theorems as laid out in the manuscript. Do not try to solve structural problems by drawing more circles unless explicitly directed.
