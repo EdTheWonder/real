@@ -1,0 +1,33 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["702d82fabbf541ee.olean"],
+  "m": false,
+  "i": "2a8c2efdb4b96c27.ilean",
+  "c": "fde9a8471f93fb0c.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=C:\\Users\\thefa\\Documents\\General - Copy (2)\\ariori-lean\\.lake\\build\\lib\\lean c:\\Users\\thefa\\.elan\\toolchains\\leanprover--lean4---v4.30.0\\bin\\lean.exe -M 8192 C:\\Users\\thefa\\Documents\\General - Copy (2)\\ariori-lean\\SpectralRun.lean -o C:\\Users\\thefa\\Documents\\General - Copy (2)\\ariori-lean\\.lake\\build\\lib\\lean\\SpectralRun.olean -i C:\\Users\\thefa\\Documents\\General - Copy (2)\\ariori-lean\\.lake\\build\\lib\\lean\\SpectralRun.ilean -c C:\\Users\\thefa\\Documents\\General - Copy (2)\\ariori-lean\\.lake\\build\\ir\\SpectralRun.c --setup C:\\Users\\thefa\\Documents\\General - Copy (2)\\ariori-lean\\.lake\\build\\ir\\SpectralRun.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["SpectralRun:deps",
+   [["deps",
+     [["ariori/spectral:extraDep", [["@ariori:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["SpectralFull transitive imports (legacy)", "89907947e9f06322"],
+        ["SpectralFull:importAllArts", "1ff42003c060dafa"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.30.0, commit d024af099ca4bf2c86f649261ebf59565dc8c622",
+   "2f4703bb19086252"],
+  ["C:\\Users\\thefa\\Documents\\General - Copy (2)\\ariori-lean\\SpectralRun.lean",
+   "7913e99a47766f2c"],
+  ["options", [["-DautoImplicit=false", "4a85acb881fd49d0"]]],
+  ["isModule: false", "feefd2a0d3a1847e"],
+  ["Module.name: SpectralRun", "3c55ce88c738571f"],
+  ["Package.id?: (some ariori)", "46bfadfa1d41e11a"],
+  ["Module.leanArgs: #[-M, 8192]", "f9b9f9b9651a51ea"]],
+ "depHash": "f5b70bbf555f98ea"}

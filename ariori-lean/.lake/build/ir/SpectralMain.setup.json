@@ -1,0 +1,7 @@
+{"plugins": [],
+ "package": "ariori",
+ "options": {"autoImplicit": false},
+ "name": "SpectralMain",
+ "isModule": false,
+ "importArts": {},
+ "dynlibs": []}

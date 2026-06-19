@@ -1,0 +1,22 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs": "cf528553894afe90.exe",
+ "log":
+ [{"message":
+   ".> c:\\Users\\thefa\\.elan\\toolchains\\leanprover--lean4---v4.30.0\\bin\\clang.exe -o C:\\Users\\thefa\\Documents\\General - Copy (2)\\ariori-lean\\.lake\\build\\bin\\spectral.exe @C:\\Users\\thefa\\Documents\\General - Copy (2)\\ariori-lean\\.lake\\build\\bin\\spectral.exe.rsp",
+   "level": "trace"}],
+ "inputs":
+ [["linkObjs",
+   [["C:\\Users\\thefa\\Documents\\General - Copy (2)\\ariori-lean\\.lake\\build\\ir\\SpectralRun.c.o.noexport",
+     "44bd41309daf4967"],
+    ["C:\\Users\\thefa\\Documents\\General - Copy (2)\\ariori-lean\\.lake\\build\\ir\\ArioriFull.c.o.noexport",
+     "6983e0599c3b89a7"],
+    ["C:\\Users\\thefa\\Documents\\General - Copy (2)\\ariori-lean\\.lake\\build\\ir\\SpectralFull.c.o.noexport",
+     "7ef8ab6c2116d39a"]]],
+  ["linkLibs", "00000000000006bb"],
+  ["Lean 4.30.0, commit d024af099ca4bf2c86f649261ebf59565dc8c622",
+   "2f4703bb19086252"],
+  ["traceArgs: #[-Wl,--whole-archive, -lleanmanifest, -Wl,--no-whole-archive]",
+   "d9dc93f51f923c09"],
+  ["x86_64-w64-windows-gnu", "360db333d006d911"]],
+ "depHash": "42563c4fa409d59a"}

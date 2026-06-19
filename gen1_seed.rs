@@ -947,15 +947,18 @@ impl Gen1Seed {
         let p = Point::new(r.clone(), 0.into());
         s.lines.push((o.clone(), p.clone(), LineType::Axis, 1, 0));
 
-        let o_idx = s.all_points.len();
-        s.all_points
-            .push((o.clone(), PointLabel::Seed(0, PointType::A), 1, 1));
-        s.point_map.insert(o.key(), o_idx);
+        let is_render_album = std::env::args().any(|a| a == "--render-album");
+        if !(is_render_album && max_gen == 4) {
+            let o_idx = s.all_points.len();
+            s.all_points
+                .push((o.clone(), PointLabel::Seed(0, PointType::A), 1, 1));
+            s.point_map.insert(o.key(), o_idx);
 
-        let p_idx = s.all_points.len();
-        s.all_points
-            .push((p.clone(), PointLabel::Seed(0, PointType::B), 0, 1));
-        s.point_map.insert(p.key(), p_idx);
+            let p_idx = s.all_points.len();
+            s.all_points
+                .push((p.clone(), PointLabel::Seed(0, PointType::B), 0, 1));
+            s.point_map.insert(p.key(), p_idx);
+        }
 
         Self::manifest_generation(
             o,
@@ -1101,27 +1104,30 @@ impl Gen1Seed {
                             );
                         }
 
-                        let key_a = p_a.key();
-                        if !s.point_map.contains_key(&key_a) {
-                            let idx = s.all_points.len();
-                            s.all_points.push((
-                                p_a,
-                                PointLabel::Seed(seed_id, PointType::A),
-                                seed_id,
-                                1,
-                            ));
-                            s.point_map.insert(key_a, idx);
-                        }
-                        let key_b = p_b.key();
-                        if !s.point_map.contains_key(&key_b) {
-                            let idx = s.all_points.len();
-                            s.all_points.push((
-                                p_b,
-                                PointLabel::Seed(seed_id, PointType::B),
-                                seed_id,
-                                1,
-                            ));
-                            s.point_map.insert(key_b, idx);
+                        let is_render_album = std::env::args().any(|a| a == "--render-album");
+                        if !(is_render_album && (g + 1) == 4) {
+                            let key_a = p_a.key();
+                            if !s.point_map.contains_key(&key_a) {
+                                let idx = s.all_points.len();
+                                s.all_points.push((
+                                    p_a,
+                                    PointLabel::Seed(seed_id, PointType::A),
+                                    seed_id,
+                                    1,
+                                ));
+                                s.point_map.insert(key_a, idx);
+                            }
+                            let key_b = p_b.key();
+                            if !s.point_map.contains_key(&key_b) {
+                                let idx = s.all_points.len();
+                                s.all_points.push((
+                                    p_b,
+                                    PointLabel::Seed(seed_id, PointType::B),
+                                    seed_id,
+                                    1,
+                                ));
+                                s.point_map.insert(key_b, idx);
+                            }
                         }
                     }
                 }
@@ -1218,27 +1224,30 @@ impl Gen1Seed {
                 kind: CircleKind::Primary,
             });
 
-            let t_key = t.key();
-            if !_point_map.contains_key(&t_key) {
-                let idx = _all_points.len();
-                _all_points.push((
-                    t.clone(),
-                    PointLabel::Seed(seed_id, PointType::T),
-                    seed_id,
-                    1,
-                ));
-                _point_map.insert(t_key, idx);
-            }
-            let bot_key = bot.key();
-            if !_point_map.contains_key(&bot_key) {
-                let idx = _all_points.len();
-                _all_points.push((
-                    bot.clone(),
-                    PointLabel::Seed(seed_id, PointType::Bot),
-                    seed_id,
-                    1,
-                ));
-                _point_map.insert(bot_key, idx);
+            let is_render_album = std::env::args().any(|a| a == "--render-album");
+            if !(is_render_album && gen == 4) {
+                let t_key = t.key();
+                if !_point_map.contains_key(&t_key) {
+                    let idx = _all_points.len();
+                    _all_points.push((
+                        t.clone(),
+                        PointLabel::Seed(seed_id, PointType::T),
+                        seed_id,
+                        1,
+                    ));
+                    _point_map.insert(t_key, idx);
+                }
+                let bot_key = bot.key();
+                if !_point_map.contains_key(&bot_key) {
+                    let idx = _all_points.len();
+                    _all_points.push((
+                        bot.clone(),
+                        PointLabel::Seed(seed_id, PointType::Bot),
+                        seed_id,
+                        1,
+                    ));
+                    _point_map.insert(bot_key, idx);
+                }
             }
         }
 
@@ -1248,99 +1257,96 @@ impl Gen1Seed {
             let mut sq = derive_square(a_pt, b_pt, r.clone(), &label, source_ratio_idx);
             sq.source_instance_idx = source_instance_idx;
 
-            arcs.push(Circle {
-                center: sq.p1.clone(),
-                radius: r.clone(),
-                label: format!("{}_C1", label),
-                source_ratio_idx,
-                source_instance_idx,
-                kind: CircleKind::ConstructionArc,
-            });
-            arcs.push(Circle {
-                center: sq.p2.clone(),
-                radius: r.clone(),
-                label: format!("{}_C2", label),
-                source_ratio_idx,
-                source_instance_idx,
-                kind: CircleKind::ConstructionArc,
-            });
+            let is_render_album = std::env::args().any(|a| a == "--render-album");
+            if !(is_render_album && gen == 4) {
+                arcs.push(Circle {
+                    center: sq.p1.clone(),
+                    radius: r.clone(),
+                    label: format!("{}_C1", label),
+                    source_ratio_idx,
+                    source_instance_idx,
+                    kind: CircleKind::ConstructionArc,
+                });
+                arcs.push(Circle {
+                    center: sq.p2.clone(),
+                    radius: r.clone(),
+                    label: format!("{}_C2", label),
+                    source_ratio_idx,
+                    source_instance_idx,
+                    kind: CircleKind::ConstructionArc,
+                });
 
-            /* Record all construction lines for global intersection analysis (Strict segments) */
-            /* Record all construction lines for global intersection analysis (Strict segments) */
-            // Granular Naming for Scaffolding
-            // 0: (p1, p3), 1: (p5, p2), 2: (c1, c3), 3: (c4, c2), 4: (p4, c2), 5: (p6, c4)
-            lines.push((
-                sq.p1.clone(),
-                sq.p3.clone(),
-                LineType::ScaffP1P3,
-                gen,
-                seed_id,
-            ));
-            lines.push((
-                sq.p5.clone(),
-                sq.p2.clone(),
-                LineType::ScaffP5P2,
-                gen,
-                seed_id,
-            ));
-            lines.push((
-                sq.c1.clone(),
-                sq.c3.clone(),
-                LineType::ScaffC1C3,
-                gen,
-                seed_id,
-            ));
-            lines.push((
-                sq.c4.clone(),
-                sq.c2.clone(),
-                LineType::ScaffC4C2,
-                gen,
-                seed_id,
-            ));
-            lines.push((
-                sq.p4.clone(),
-                sq.c2.clone(),
-                LineType::ScaffP4C2,
-                gen,
-                seed_id,
-            ));
-            lines.push((
-                sq.p6.clone(),
-                sq.c4.clone(),
-                LineType::ScaffP6C4,
-                gen,
-                seed_id,
-            ));
+                lines.push((
+                    sq.p1.clone(),
+                    sq.p3.clone(),
+                    LineType::ScaffP1P3,
+                    gen,
+                    seed_id,
+                ));
+                lines.push((
+                    sq.p5.clone(),
+                    sq.p2.clone(),
+                    LineType::ScaffP5P2,
+                    gen,
+                    seed_id,
+                ));
+                lines.push((
+                    sq.c1.clone(),
+                    sq.c3.clone(),
+                    LineType::ScaffC1C3,
+                    gen,
+                    seed_id,
+                ));
+                lines.push((
+                    sq.c4.clone(),
+                    sq.c2.clone(),
+                    LineType::ScaffC4C2,
+                    gen,
+                    seed_id,
+                ));
+                lines.push((
+                    sq.p4.clone(),
+                    sq.c2.clone(),
+                    LineType::ScaffP4C2,
+                    gen,
+                    seed_id,
+                ));
+                lines.push((
+                    sq.p6.clone(),
+                    sq.c4.clone(),
+                    LineType::ScaffP6C4,
+                    gen,
+                    seed_id,
+                ));
 
-            lines.push((sq.k.clone(), sq.l.clone(), LineType::EdgeKL, gen, seed_id));
-            lines.push((sq.l.clone(), sq.n.clone(), LineType::EdgeLN, gen, seed_id));
-            lines.push((sq.n.clone(), sq.m.clone(), LineType::EdgeNM, gen, seed_id));
-            lines.push((sq.m.clone(), sq.k.clone(), LineType::EdgeMK, gen, seed_id));
+                lines.push((sq.k.clone(), sq.l.clone(), LineType::EdgeKL, gen, seed_id));
+                lines.push((sq.l.clone(), sq.n.clone(), LineType::EdgeLN, gen, seed_id));
+                lines.push((sq.n.clone(), sq.m.clone(), LineType::EdgeNM, gen, seed_id));
+                lines.push((sq.m.clone(), sq.k.clone(), LineType::EdgeMK, gen, seed_id));
 
-            // Register ALL construction points to point_map
-            // Square vertices
-            for (pt, pt_type) in [
-                (sq.k.clone(), PointType::K),
-                (sq.l.clone(), PointType::L),
-                (sq.m.clone(), PointType::M),
-                (sq.n.clone(), PointType::N),
-                (sq.s.clone(), PointType::S),
-                (sq.p1.clone(), PointType::P1),
-                (sq.p2.clone(), PointType::P2),
-                (sq.p3.clone(), PointType::P3),
-                (sq.p4.clone(), PointType::P4),
-                (sq.p5.clone(), PointType::P5),
-                (sq.p6.clone(), PointType::P6),
-                (sq.c1.clone(), PointType::C1),
-                (sq.c2.clone(), PointType::C2),
-                (sq.c3.clone(), PointType::C3),
-                (sq.c4.clone(), PointType::C4),
-            ] {
-                let key = pt.key();
-                if !_point_map.contains_key(&key) {
-                    let idx = _all_points.len();
-                    _all_points.push((pt, PointLabel::Seed(seed_id, pt_type), seed_id, 1));
-                    _point_map.insert(key, idx);
+                for (pt, pt_type) in [
+                    (sq.k.clone(), PointType::K),
+                    (sq.l.clone(), PointType::L),
+                    (sq.m.clone(), PointType::M),
+                    (sq.n.clone(), PointType::N),
+                    (sq.s.clone(), PointType::S),
+                    (sq.p1.clone(), PointType::P1),
+                    (sq.p2.clone(), PointType::P2),
+                    (sq.p3.clone(), PointType::P3),
+                    (sq.p4.clone(), PointType::P4),
+                    (sq.p5.clone(), PointType::P5),
+                    (sq.p6.clone(), PointType::P6),
+                    (sq.c1.clone(), PointType::C1),
+                    (sq.c2.clone(), PointType::C2),
+                    (sq.c3.clone(), PointType::C3),
+                    (sq.c4.clone(), PointType::C4),
+                ] {
+                    let key = pt.key();
+                    if !_point_map.contains_key(&key) {
+                        let idx = _all_points.len();
+                        _all_points.push((pt, PointLabel::Seed(seed_id, pt_type), seed_id, 1));
+                        _point_map.insert(key, idx);
+                    }
                 }
             }
 
@@ -1453,6 +1459,11 @@ impl Gen1Seed {
 
     fn run_global_analysis(&mut self, r: VesicaNumber) {
         let target_gen = self.generation;
+        let is_render_album = std::env::args().any(|a| a == "--render-album");
+        if is_render_album && target_gen == 4 {
+            println!("  ★ Skipping global analysis for Gen 4 during album render to save memory.");
+            return;
+        }
 
         // ==================== PHASE 1: INTERSECTIONS (CACHED) ====================
         let phase1_cache_path = format!("cache/gen{}_phase1.bin", target_gen);
@@ -3705,6 +3716,124 @@ fn main() -> Result<(), eframe::Error> {
         let o = Point::new(VesicaNumber::zero(), VesicaNumber::zero());
         let p = Point::new(seed.circles[1].radius.clone(), VesicaNumber::zero());
         println!("L: {} {} {} {}", o.x.to_f64(), o.y.to_f64(), p.x.to_f64(), p.y.to_f64());
+        return Ok(());
+    }
+    if args.contains(&"--render-album".to_string()) {
+        use plotters::prelude::*;
+        println!("Generating Gen 4 data for album cover...");
+        let seed = Gen1Seed::new(100.0, 4);
+        
+        let out_file = "gen4_album_cover.png";
+        let root = BitMapBackend::new(out_file, (3000, 3000)).into_drawing_area();
+        root.fill(&RGBColor(137, 207, 220)).unwrap(); // Teal like baby blue
+
+        // All construction shapes are pink
+        let gen_color = |_label: &str| -> RGBColor {
+            RGBColor(255, 105, 180) // Pink
+        };
+
+        // Find bounding box encompassing both circles and all points
+        let mut min_x = f64::MAX;
+        let mut max_x = f64::MIN;
+        let mut min_y = f64::MAX;
+        let mut max_y = f64::MIN;
+        for c in &seed.circles {
+            let cx = c.center.x.to_f64();
+            let cy = c.center.y.to_f64();
+            let r = c.radius.to_f64();
+            min_x = min_x.min(cx - r);
+            max_x = max_x.max(cx + r);
+            min_y = min_y.min(cy - r);
+            max_y = max_y.max(cy + r);
+        }
+        for sq in &seed.squares {
+            for pt in [&sq.p1, &sq.p2, &sq.p3, &sq.p4, &sq.p5, &sq.p6, &sq.c1, &sq.c2, &sq.c3, &sq.c4, &sq.k, &sq.l, &sq.n, &sq.m, &sq.s] {
+                let px = pt.x.to_f64();
+                let py = pt.y.to_f64();
+                min_x = min_x.min(px);
+                max_x = max_x.max(px);
+                min_y = min_y.min(py);
+                max_y = max_y.max(py);
+            }
+        }
+        
+        let mut range_x = max_x - min_x;
+        let mut range_y = max_y - min_y;
+        let max_range = range_x.max(range_y);
+        
+        let cx = (min_x + max_x) / 2.0;
+        let cy = (min_y + max_y) / 2.0;
+        
+        // Make the viewport square to preserve 1:1 aspect ratio
+        min_x = cx - max_range / 2.0;
+        max_x = cx + max_range / 2.0;
+        min_y = cy - max_range / 2.0;
+        max_y = cy + max_range / 2.0;
+
+        // Add padding
+        let padding = max_range * 0.05;
+        min_x -= padding;
+        max_x += padding;
+        min_y -= padding;
+        max_y += padding;
+
+        let mut chart = ChartBuilder::on(&root)
+            .build_cartesian_2d(min_x..max_x, min_y..max_y)
+            .unwrap();
+
+        // Draw circles — color determined by generation via label
+        let steps = 150;
+        for c in &seed.circles {
+            let color = gen_color(&c.label);
+            let cx = c.center.x.to_f64();
+            let cy = c.center.y.to_f64();
+            let r = c.radius.to_f64();
+            let mut points = Vec::new();
+            for i in 0..=steps {
+                let angle = (i as f64) * 2.0 * std::f64::consts::PI / (steps as f64);
+                points.push((cx + r * angle.cos(), cy + r * angle.sin()));
+            }
+            chart.draw_series(std::iter::once(PathElement::new(points, color.stroke_width(2)))).unwrap();
+        }
+
+        // Draw scaffolding and squares — color determined by generation via label
+        for sq in &seed.squares {
+            let color = gen_color(&sq.label);
+            let scaff = [
+                (&sq.p1, &sq.p3),
+                (&sq.p5, &sq.p2),
+                (&sq.c1, &sq.c3),
+                (&sq.c4, &sq.c2),
+                (&sq.p4, &sq.c2),
+                (&sq.p6, &sq.c4),
+            ];
+            for (pt1, pt2) in scaff {
+                chart.draw_series(std::iter::once(PathElement::new(
+                    vec![(pt1.x.to_f64(), pt1.y.to_f64()), (pt2.x.to_f64(), pt2.y.to_f64())],
+                    color.stroke_width(1),
+                ))).unwrap();
+            }
+            let edges = [
+                (&sq.k, &sq.l),
+                (&sq.l, &sq.n),
+                (&sq.n, &sq.m),
+                (&sq.m, &sq.k),
+            ];
+            for (pt1, pt2) in edges {
+                chart.draw_series(std::iter::once(PathElement::new(
+                    vec![(pt1.x.to_f64(), pt1.y.to_f64()), (pt2.x.to_f64(), pt2.y.to_f64())],
+                    color.stroke_width(3),
+                ))).unwrap();
+            }
+        }
+
+        // Present the root to save the generated image first
+        root.present().unwrap();
+        drop(chart); // Must drop chart borrow
+        drop(root);
+
+        println!("Album cover successfully saved to {}", out_file);
+
         return Ok(());
     }
     if args.contains(&"--headless".to_string()) {

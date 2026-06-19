@@ -1,0 +1,11 @@
+{"plugins": [],
+ "package": "spectral",
+ "options": {"autoImplicit": false},
+ "name": "SpectralMain",
+ "isModule": false,
+ "importArts":
+ {"SpectralAnalytic":
+  ["C:\\Users\\thefa\\Documents\\General - Copy (2)\\spectral-lean\\.lake\\build\\lib\\lean\\SpectralAnalytic.olean"],
+  "Spectral":
+  ["C:\\Users\\thefa\\Documents\\General - Copy (2)\\spectral-lean\\.lake\\build\\lib\\lean\\Spectral.olean"]},
+ "dynlibs": []}

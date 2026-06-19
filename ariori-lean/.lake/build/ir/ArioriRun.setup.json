@@ -1,0 +1,7 @@
+{"plugins": [],
+ "package": "ariori",
+ "options": {"autoImplicit": false},
+ "name": "ArioriRun",
+ "isModule": false,
+ "importArts": {},
+ "dynlibs": []}

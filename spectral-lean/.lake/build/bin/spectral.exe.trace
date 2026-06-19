@@ -1,0 +1,18 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs": "0094eeb90c5c53e0.exe",
+ "log":
+ [{"message":
+   ".> c:\\Users\\thefa\\.elan\\toolchains\\leanprover--lean4---v4.30.0\\bin\\clang.exe -o C:\\Users\\thefa\\Documents\\General - Copy (2)\\spectral-lean\\.lake\\build\\bin\\spectral.exe @C:\\Users\\thefa\\Documents\\General - Copy (2)\\spectral-lean\\.lake\\build\\bin\\spectral.exe.rsp",
+   "level": "trace"}],
+ "inputs":
+ [["linkObjs",
+   [["C:\\Users\\thefa\\Documents\\General - Copy (2)\\spectral-lean\\.lake\\build\\ir\\Spectral.c.o.noexport",
+     "bc16379912589209"]]],
+  ["linkLibs", "00000000000006bb"],
+  ["Lean 4.30.0, commit d024af099ca4bf2c86f649261ebf59565dc8c622",
+   "2f4703bb19086252"],
+  ["traceArgs: #[-Wl,--whole-archive, -lleanmanifest, -Wl,--no-whole-archive]",
+   "d9dc93f51f923c09"],
+  ["x86_64-w64-windows-gnu", "360db333d006d911"]],
+ "depHash": "6141754feecdce96"}

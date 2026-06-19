@@ -1,0 +1,18 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs": "bc16379912589209.o",
+ "log":
+ [{"message":
+   ".> c:\\Users\\thefa\\.elan\\toolchains\\leanprover--lean4---v4.30.0\\bin\\clang.exe -c -o C:\\Users\\thefa\\Documents\\General - Copy (2)\\spectral-lean\\.lake\\build\\ir\\Spectral.c.o.noexport C:\\Users\\thefa\\Documents\\General - Copy (2)\\spectral-lean\\.lake\\build\\ir\\Spectral.c -I c:\\Users\\thefa\\.elan\\toolchains\\leanprover--lean4---v4.30.0\\include -fstack-clash-protection -fdata-sections -ffunction-sections -Wno-unused-command-line-argument --sysroot c:\\Users\\thefa\\.elan\\toolchains\\leanprover--lean4---v4.30.0 -nostdinc -isystem c:\\Users\\thefa\\.elan\\toolchains\\leanprover--lean4---v4.30.0/include/clang -O3 -DNDEBUG",
+   "level": "trace"}],
+ "inputs":
+ [["Spectral:c",
+   [["C:\\Users\\thefa\\Documents\\General - Copy (2)\\spectral-lean\\.lake\\build\\ir\\Spectral.c",
+     "dbdaf69b2f705323"],
+    ["Lean 4.30.0, commit d024af099ca4bf2c86f649261ebf59565dc8c622",
+     "2f4703bb19086252"]]],
+  ["Lean 4.30.0, commit d024af099ca4bf2c86f649261ebf59565dc8c622",
+   "2f4703bb19086252"],
+  ["traceArgs: #[-O3, -DNDEBUG]", "6c7bb0eeabd8f74a"],
+  ["x86_64-w64-windows-gnu", "360db333d006d911"]],
+ "depHash": "0e10d3d717aa5aaa"}

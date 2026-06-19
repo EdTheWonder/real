@@ -1,0 +1,1 @@
+def test (l : List Nat) : List Nat := l.flatMap (fun x => [x, x])

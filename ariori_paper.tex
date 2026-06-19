@@ -20,9 +20,10 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{definition}{Definition}
+\newtheorem{conjecture}{Conjecture}
 
 % Title
-\title{\textbf{The 17-Point Seed:} \\ Topological Derivation of the Standard Model \\ from Compass-and-Straightedge Geometry}
+\title{\textbf{The 17-Point Seed:} \\ Geometric Correspondences and Structural Foundations \\ for the Standard Model from Compass-and-Straightedge Geometry}
 \author{Iyindamope Edward Ariori}
 \date{}
 
@@ -34,11 +35,16 @@
 % ABSTRACT
 % ============================================================
 \begin{abstract}
-The Vesica Piscis construction---two unit circles overlapping at their radii, extended by compass arcs and straightedge intersections---produces exactly \textbf{17 points}, \textbf{21 atomic line segments}, and \textbf{6 unique length ratios}, all lying in the algebraic number field $\mathbb{Q}(\sqrt{3})$. This paper presents the construction, proves it is the unique minimal zero-parameter compass-and-straightedge algorithm relating a circle to a square, and demonstrates that the resulting planar graph exhibits structural correspondences with the Standard Model of particle physics through six theorems: (1)~the uniqueness of~17, (2)~exactly 3 closed triangular cycles corresponding to fermion generations, (3)~intrinsic chiral asymmetry, (4)~a degree sequence consistent with confinement and decay, (5)~an algebraic field boundary ($\mathbb{Q}(\sqrt{3})$ vs.\ $\mathbb{Q}(\sqrt{13})$) separating two mass-coupling mechanisms, and (6)~an emergent Lorentzian metric of signature~$(1,3)$ with~$c = \sqrt{3}$. The construction assumes only Euclid's axioms and contains zero free parameters.
+The Vesica Piscis construction---two unit circles overlapping at their radii, extended by compass arcs and straightedge intersections---produces exactly \textbf{17 points}, \textbf{21 atomic line segments}, and \textbf{6 unique length ratios}, natively bounding a spatial geometry over the algebraic field $\mathbb{Q}(\sqrt{3})$. This paper establishes a rigorous topological account of this discrete structure using a hybrid methodology: the Lean~4 theorem prover serves as a computational certificate for the foundational discrete topology (exact coordinates, distance algebra, graph invariants, and automorphism group), while standard analytical physics (representation theory, spectral graph theory, and discrete differential geometry) bridges the certified baseline to the architecture of the Standard Model. Key Lean-verified results include the rigid $\mathbb{Q}(\sqrt{13})$ algebraic field boundary separating internal degrees of freedom, an emergent $(1,3)$ Lorentzian eigenvalue signature, a strict $\mathbb{Z}/2$ automorphism group, and a non-zero Forman-Ricci curvature invariant ($S = -15$). Analytical derivations from these certified invariants yield structural correspondences to the gauge group dimensions $U(1) \times SU(2) \times SU(3)$, suggest a three-generation 2-simplex sector under the stated analytical identification, and provide a native geometric framework for gravitational curvature---all without free parameters.
 \end{abstract}
 
 \tableofcontents
 \newpage
+
+% ============================================================
+% PART I: PURE GEOMETRY (THEOREMS)
+% ============================================================
+\part{Pure Geometry (Theorems)}
 
 % ============================================================
 % SECTION 1: THE CONSTRUCTION
@@ -195,7 +201,15 @@ A line segment connecting two construction points with no other construction poi
     \item Every child construction produces 17~new local points, some of which may coincide with points from overlapping constructions. The distinct union of all points across all child seeds defines the next generation.
 \end{itemize}
 
-\noindent This process continues \emph{ad infinitum}. Across 4~generations of recursion, the structure grows from 17~points and 6~ratios to over 6.5~million points and 2{,}333~ratios (see Section~\ref{sec:crossgen}).
+\noindent This process continues \emph{ad infinitum}. Across 4~generations of recursion, the structure grows from 17~points and 6~ratios to over 6.5~million points and 2{,}333~ratios.
+
+\subsection{Note on Computational Verification and the Formalization Boundary}\label{sec:formalization}
+
+The mathematical proofs in this paper utilize a hybrid methodology. The 17-point coordinate geometry and its 21-edge relational scaffolding are constructively derived via the zero-parameter Vesica Piscis algorithm described above. These exact symbolic coordinates and their resultant adjacency matrix are then encoded into the Lean~4 theorem prover.
+
+The Lean~4 formalization serves as a rigorous, brute-force \textbf{computational certificate} for the discrete graph. Lean natively verifies: the pairwise distinctness of the 17 coordinates, the exact fractional squared distances in $\mathbb{Q}(\sqrt{3})$, the $\mathbb{Q}(\sqrt{13})$ algebraic field boundary (Theorem~5), the rank and nullity of the graph Laplacian, the triangle count (= 3), and---under the explicit edge-incidence encoding used here---a certified 3-generator candidate 2-simplex sector, the boundary subset dimensions, the exact $(1,3)$ eigenvalue signature of the spacetime submatrix, the strict $\mathbb{Z}/2$ automorphism group, and the Forman-Ricci curvature invariant ($S = -15$).
+
+The physical derivations in Part~II (Lie algebra emergence, Dirac zero-modes, gauge representations, and continuum-limit projections) are achieved by applying standard analytical physics to this Lean-verified discrete topological baseline. Claims of this analytical character are clearly marked as ``Physical derivations'' throughout.
 
 \subsection{Uniqueness and Parsimony}\label{sec:uniqueness}
 
@@ -286,20 +300,18 @@ All ratios lie in $\mathbb{Q}(\sqrt{3})$, the smallest field extension of $\math
 % ============================================================
 \section{The Six Structural Theorems}
 
-\begin{theorem}[17-Point Uniqueness]
-The Vesica Piscis construction with compass extension and intersection rule produces exactly $17$ points. This count is the geometric minimum required to derive an orthogonal metric (a square) from circular symmetry.
+\begin{theorem}[Exact Algorithmic Equivalence]
+The foundational Vesica Piscis construction algorithm evaluates precisely to the 17 specified nodes, 21 atomic line segments, and the exact 6-ratio spectrum listed in Table~\ref{tab:spectrum}, establishing exact equivalence within the Lean formalization between the construction algorithm, the 17-node specification, and the certified 6-ratio spectrum.
 \end{theorem}
 
 \begin{proof}
-Each construction step is fully determined (zero degrees of freedom). The 12 necessary points arise from exactly 4 pairs of circle--circle intersections (2 primary + 2 secondary). The 4 compass extensions are uniquely determined by the construction radii. The 5 emergent points arise from exactly 5 line--line intersections in the scaffolding. No additional intersections exist between constructed lines. The total is therefore $2 + 4 + 4 + 4 + 1 + 2 = 17$ (where $A$ and $B$ are the 2 input points).
+Each construction step is strictly deterministic. The Lean~4 formalization explicitly executes the intersection of the 11 baseline boundaries generated by the two fundamental unit circles. The kernel verifies by \texttt{native\_decide} computation that the algorithm evaluates exactly to the 17 specified coordinates, generating an exhaustive geometric intersection that splits into exactly 21 atomic segments matching the 6-ratio multiset defined in Table~\ref{tab:spectrum}.
 \end{proof}
-
-\noindent\textbf{Physical correspondence:} $17 = 12 + 4 + 1$, matching the Standard Model's~\cite{pdg2024} 12 gauge group generators $[U(1) \times SU(2) \times SU(3)]$~\cite{yangmills,gellmann} + 4 spacetime coordinates + 1 scalar (Higgs boson)~\cite{higgs}.
 
 \bigskip
 
 \begin{theorem}[Three-Generation Triangle Theorem]
-The planar graph $G = (V{=}17,\; E{=}21)$ contains exactly $3$ triangular cycles (closed 3-paths).
+The planar graph $G = (V{=}17,\; E{=}21)$ contains exactly $3$ triangular cycles (closed 3-paths). The Lean~4 kernel computationally certifies, under the chosen edge-incidence encoding and bounded search used in the implementation, that the three triangle generators behave as an independent 3-generator candidate 2-simplex sector.
 \end{theorem}
 
 \begin{proof}
@@ -307,29 +319,17 @@ Let $\mathbf{A}$ be the $17 \times 17$ adjacency matrix of $G$. Direct computati
 
 The three triangles are:
 \begin{align}
-\Delta_1 &: A \leftrightarrow C_2 \leftrightarrow C_4 \leftrightarrow A \qquad \text{(equilateral: all edges } = r\text{)} \\
-\Delta_2 &: A \leftrightarrow X_{17} \leftrightarrow C_1 \leftrightarrow A \qquad \text{(right triangle: } \rho_5^2 + \rho_3^2 = \rho_6^2\text{)} \\
-\Delta_3 &: A \leftrightarrow X_{17} \leftrightarrow C_3 \leftrightarrow A \qquad \text{(right triangle: mirror of } \Delta_2\text{)}
+\Delta_1 &: A \leftrightarrow X_{17} \leftrightarrow C_1 \leftrightarrow A \qquad \text{(right triangle: } \rho_5^2 + \rho_3^2 = \rho_6^2\text{)} \\
+\Delta_2 &: A \leftrightarrow C_2 \leftrightarrow C_4 \leftrightarrow A \qquad \text{(equilateral: all edges } = r\text{)} \\
+\Delta_3 &: A \leftrightarrow X_{17} \leftrightarrow C_3 \leftrightarrow A \qquad \text{(right triangle: mirror of } \Delta_1\text{)}
 \end{align}
 \end{proof}
-
-\noindent\textbf{Physical correspondence:}
-\begin{itemize}[nosep]
-    \item $\Delta_1$ (equilateral, Higgs-free) $\to$ Generation~I fermions (u, d, $e^-$, $\nu_e$). \emph{Stable}---the loop closes without the mass mechanism.
-    \item $\Delta_2, \Delta_3$ (right triangles, Higgs-dependent) $\to$ Generation~II and III fermions. \emph{Unstable}---structurally anchored to the symmetry-breaking node $X_{17}$.
-\end{itemize}
 
 \bigskip
 
 \begin{theorem}[Chiral Asymmetry]
-The construction has an intrinsic left--right asymmetry: the Higgs node $X_{17} = (50\sqrt{3},\, 0)$ exists on the $+x$ side of the origin $A$. No corresponding node exists at $(-50\sqrt{3},\, 0)$.
+The construction has an intrinsic left--right asymmetry: the node $X_{17} = (50\sqrt{3},\, 0)$ exists on the $+x$ side of the origin $A$. No corresponding node exists at $(-50\sqrt{3},\, 0)$.
 \end{theorem}
-
-\begin{proof}
-A node at $(-50\sqrt{3},\, 0)$ would require a line--line intersection at that coordinate. No construction line passes through $(-50\sqrt{3},\, 0)$: the two scaffolding lines on the left side ($C_4$--$C_2$ and $K$--$M$) are both vertical at $x = -50\sqrt{3}$, hence parallel and non-intersecting. The asymmetry is forced by the initial directional choice $B = (r, 0)$ with $r > 0$.
-\end{proof}
-
-\noindent\textbf{Physical correspondence:} Parity violation in the weak interaction~\cite{wuexp}. The geometric chirality arises because the first act of the construction---placing Circle~$B$ to the right of Circle~$A$---permanently breaks left--right symmetry for all Higgs-coupled interactions.
 
 \bigskip
 
@@ -351,20 +351,22 @@ The degree sequence of $G$ classifies nodes into exactly 4 connectivity tiers:
 \end{center}
 \end{theorem}
 
-\begin{proof}
-Direct computation from the adjacency list of the 21 atomic edges. The handshaking lemma confirms: $5 + 3(4) + 2(3) + 8(2) + 3(1) = 42 = 2 \times 21$. \qedhere
-\end{proof}
+\bigskip
 
-\noindent\textbf{Physical correspondence:}
-\begin{itemize}[nosep]
-    \item \textbf{Degree 2} (8 nodes) $\to$ $SU(3)$ color confinement. Removing a degree-2 node from a chain requires breaking two edges, pulling adjacent nodes. This mirrors quark confinement: extracting a color charge produces new quark--antiquark pairs before isolation occurs.
-    \item \textbf{Degree 1} (3 nodes) $\to$ $SU(2)$ weak decay. A leaf node is detached by severing a single edge. This mirrors radioactive $\beta$-decay: particles escape through the weak interaction.
-\end{itemize}
+\begin{theorem}[Parity $10 \oplus 7$ Vector Space Decomposition]
+The graph automorphism group is exactly $\mathbb{Z}/2$. Over the 17-dimensional geometric vector space $V \cong \mathbb{R}^{17}$, the involutive mirror permutation on the 17-node basis induces a decomposition into 10 symmetric and 7 antisymmetric basis directions, formally verified by the Lean~4 kernel.
+\end{theorem}
+
+\bigskip
+
+\begin{theorem}[Certified Recursive Scale Consistency]
+The recursive ansatz uses a scale factor in $\mathbb{Q}(\sqrt{3})$ whose initial iterates are explicitly computable, positive, and bounded above by the seed radius in the cases checked by the Lean formalization.
+\end{theorem}
 
 \bigskip
 
 \begin{theorem}[The $\sqrt{13}$ Algebraic Field Boundary]
-The distances from spacetime nodes $C_1$--$C_4$ to the Higgs node $X_{17}$ split into two distinct algebraic classes:
+The distances from the highest-degree boundary nodes $C_1$--$C_4$ to the $x$-axis node $X_{17}$ split into two distinct algebraic classes:
 
 \begin{center}
 \begin{tabular}{@{}cccc@{}}
@@ -390,29 +392,10 @@ $C_4 = (-50\sqrt{3},\, 50)$ and $X_{17} = (50\sqrt{3},\, 0)$. Therefore:
 Hence $|C_4 - X_{17}| = \frac{r\sqrt{13}}{2}$. Since $\sqrt{13} \notin \mathbb{Q}(\sqrt{3})$, this distance lies in the algebraic field $\mathbb{Q}(\sqrt{3}, \sqrt{13})$, which is strictly larger than the construction's native field $\mathbb{Q}(\sqrt{3})$.
 \end{proof}
 
-\noindent\textbf{Physical correspondence:}
-\begin{itemize}[nosep]
-    \item $C_1, C_3$ (quarks): Couple to the Higgs through the native algebraic field $\mathbb{Q}(\sqrt{3})$. Direct, strong coupling $\to$ large masses.
-    \item $C_2, C_4$ (leptons): Couple to the Higgs through the alien field $\mathbb{Q}(\sqrt{13})$. The coupling is geometrically real but algebraically incompatible with the construction's spectrum $\to$ anomalously small masses. This constitutes the geometric realization of the \textbf{seesaw mechanism} for neutrino mass generation.
-\end{itemize}
 
-\bigskip
-
-\begin{theorem}[Completeness and the $(1,16)$ Lorentzian Signature]
-If one drops the specific edges of the compass-and-straightedge algorithm and considers only the raw metric space of the 17 deterministic points, the Euclidean distance matrix $D_{17 \times 17}$ encodes a global mathematical signature isomorphic to a Lorentzian manifold.
-\end{theorem}
-
-\begin{proof}
-Let $D$ be the complete distance matrix where $D_{ij}$ is the Euclidean distance between points $i$ and $j$. The eigenspectrum of $D$ consists of:
-\begin{itemize}[nosep]
-    \item Exactly 1 positive eigenvalue ($\lambda_1 \approx 2384.9r$)
-    \item Exactly 16 negative eigenvalues ($\lambda_2 \dots \lambda_{17} < 0$)
-\end{itemize}
-By Schoenberg's theorem, this strict eigensignature establishes that the 17-point configuration inherently embeds into a $(1, 16)$ Minkowski-like vector space. While a discrete Euclidean Distance Matrix does not directly constitute a parameterized physical local spacetime manifold, the metric signature of special relativity emerges as an inescapable intrinsic mathematical property of the spatial correlations between the generated points.
-\end{proof}
 
 \begin{theorem}[Emergent $(1,3)$ Spacetime]
-The sub-matrix restricted to the 4 designated spacetime degrees of freedom ($C_1$, $C_2$, $C_3$, $C_4$) exclusively establishes an algebraic $(1,3)$ Minkowski signature, forcing exact geometric upper bounds equivalent to the speed of light $c$.
+The sub-matrix restricted to the 4 designated spacetime degrees of freedom ($C_1$, $C_2$, $C_3$, $C_4$) exclusively establishes an algebraic $(1,3)$ Minkowski signature, yielding a dimensionless geometric eigen-ratio that structurally bounds the time-like to space-like expansion.
 \end{theorem}
 
 \begin{proof}
@@ -436,391 +419,228 @@ This perfect $(1,3)$ signature mirrors the $(+,-,-,-)$ metric of physical spacet
 
 \noindent\textbf{Geometric Centrality and the Origin of Mass (Mach's Principle):}
 
-In a complete discrete metric space, the "scalar density" or gravitational well of a node $i$ can be defined by its geometric potential—the sum of its distances to all other nodes: $V_i = \sum_j D_{ij}$. A lower potential indicates deeper centrality. Computing this for the 17 nodes reveals a perfect hierarchy matching physical mass dynamics:
+In a complete discrete metric space, the inertial coupling of a node $i$ to the full graph is measured by an $L^2$ Machian potential---the sum of \emph{squared} normalized distances to all other nodes:
+\[
+V_i = \sum_{j \neq i} \left(\frac{D_{ij}}{r}\right)^2 .
+\]
+This is the natural discrete analogue of a quadratic mass term $\frac{1}{2}\phi^T \mathbf{M}\phi$ on the lattice (Section~\ref{sec:lagrangian}): it stays in $\mathbb{Q}(\sqrt{3})$ without invoking $\sqrt{13}$ in the mass ordering proofs, and is machine-checked in the companion Lean file (\texttt{centralityPotentialSq}). A lower $V_i$ indicates deeper centrality (heavier effective mass). Computing this for the 17 nodes reveals a hierarchy matching physical mass dynamics:
 \begin{enumerate}[nosep]
-    \item \textbf{Rank 1 ($A$, $V \approx 18.23r$):} The absolute structural origin.
-    \item \textbf{Rank 2 ($X_{17}$, $V \approx 18.47r$):} The Higgs node is computationally the densest, most globally central topological point after the origin, affirming its unique role as the locus of mass distribution.
-    \item \textbf{Quarks vs.\ Leptons:} The quark DOFs ($C_1, C_3$) have $V \approx 19.97r$, locating them significantly deeper in the central gravity well than the lepton DOFs ($C_2, C_4$) at $V \approx 25.58r$. This pure geometric centrality matches the observed mass hierarchy: quarks ($u, d$) are significantly heavier than leptons ($e, \nu_e$).
+    \item \textbf{Rank 1 ($A$, $V \approx 21.75$ in units of $r^2$):} The absolute structural origin.
+    \item \textbf{Rank 2 ($X_{17}$, $V \approx 26.07$):} The unique degree-4 node on the parity-symmetric axis constitutes the second-deepest potential well.
+    \item \textbf{Sub-orbit Divergence:} The nodes embedded natively in $\mathbb{Q}(\sqrt{3})$ ($C_1, C_3$) have $V \approx 30.32$, locating them significantly deeper in the central potential well than the dimensionally equivalent nodes ($C_2, C_4$) which require the algebraic extension $\mathbb{Q}(\sqrt{13})$ at $V \approx 47.18$.
 \end{enumerate}
 
-Mass, in this framework, ceases to be an intrinsic scalar appended to a particle. It is instead a geometric measure of a node's topological centrality relative to the structure of the entire universe (a realization of Mach's Principle). Gravity is the gradient of this geometric potential.
+Geometric centrality ($V_i$) functions as a purely topological measure of a node's inertial coupling relative to the entire structure.
 
 % ============================================================
-% SECTION 3: THE PARTICLE TABLE
+% SECTION 3: NODE CLASSIFICATION BY GEOMETRIC INVARIANTS
 % ============================================================
-\section{The Particle Classification}
+\section{Node Classification by Geometric Invariants}
 
-\subsection{Bosons}
+The 17 nodes of the graph are classified by two rigid, Lean-verified geometric invariants: their \textbf{degree} (connectivity) and their \textbf{algebraic field membership} (whether their metric coupling to $X_{17}$ resolves in $\mathbb{Q}(\sqrt{3})$ or requires the extension $\mathbb{Q}(\sqrt{13})$). No physical labels are assigned at this stage.
 
-The 13 bosonic degrees of freedom (12 gauge + 1 scalar) map to the 13 non-spacetime points:
+\begin{enumerate}
+    \item \textbf{The Origin ($A$):} The unique degree-5 node, maximally connected.
+    \item \textbf{The Axis Node ($X_{17}$):} A degree-4 node lying exactly on the parity-symmetric $x$-axis ($y = 0$), invariant under the $\mathbb{Z}/2$ mirror automorphism.
+    \item \textbf{Detachable Leaves ($B, P_4, P_6$):} Three degree-1 nodes on the outer boundary.
+    \item \textbf{Confined Boundary Chains ($K, L, M, N, \text{Top}, \text{Bot}, P_3, P_5$):} Eight degree-2 nodes forming connected chain pathways.
+    \item \textbf{$\mathbb{Q}(\sqrt{3})$-coupled Internal Nodes ($C_1, C_3$):} Degree-4 nodes whose squared distance to $X_{17}$ equals $r^2/4 \in \mathbb{Q}$. They participate in the right triangles $\Delta_1$ and $\Delta_3$.
+    \item \textbf{$\mathbb{Q}(\sqrt{13})$-coupled Internal Nodes ($C_2, C_4$):} Degree-3 nodes whose squared distance to $X_{17}$ equals $13r^2/4$, requiring the algebraic extension $\mathbb{Q}(\sqrt{13})$. They participate in the equilateral triangle $\Delta_2$.
+\end{enumerate}
 
-\begin{table}[h]
-\centering
-\begin{tabular}{@{}llll@{}}
-\toprule
-\textbf{DOF Point(s)} & \textbf{Gauge Group} & \textbf{Particle(s)} & \textbf{Degree} \\
-\midrule
-$A$ & $U(1)_Y$ & Photon ($\gamma$) / $B$ boson & 5 \\
-$B, P_4, P_6$ & $SU(2)_L$ & $W^+, W^-, Z^0$ & 1 \\
-$K,L,M,N,\text{Top},\text{Bot},P_3,P_5$ & $SU(3)_C$ & 8 Gluons & 2 \\
-$X_{17}$ & Scalar & Higgs ($H^0$) & 4 \\
-\bottomrule
-\end{tabular}
-\caption{Bosonic particle mapping.}
-\end{table}
+The algebraic field boundary splitting items 5 and 6 is a Lean-verified theorem (Theorem~5). The degree sequence is likewise Lean-verified (Theorem~4). This classification is forced by the geometry, not chosen by the author.
 
-The electroweak mixing proceeds along the axis $A \to X_{17} \to B$, where the Higgs node $X_{17}$ interrupts the $U(1)$--$SU(2)$ axis, splitting it into a massless component (the photon) and a massive component (the $Z$ boson).
+% Removed Sections 4, 5, and 6 to adhere to Lean-verified purely geometric constraints.
 
-\subsection{Fermions}
 
-The 12 fermions arise as excitations of the 4 spacetime DOFs ($C_1$--$C_4$) across the 3 triangular generations:
-
-\begin{table}[h]
-\centering
-\begin{tabular}{@{}cclll@{}}
-\toprule
-\textbf{DOF} & \textbf{Higgs Coupling} & \textbf{Gen~I ($\Delta_1$)} & \textbf{Gen~II ($\Delta_2$)} & \textbf{Gen~III ($\Delta_3$)} \\
-\midrule
-$C_1$ (deg~4) & $\mathbb{Q}(\sqrt{3})$ & Up ($u$) & Charm ($c$) & Top ($t$) \\
-$C_3$ (deg~4) & $\mathbb{Q}(\sqrt{3})$ & Down ($d$) & Strange ($s$) & Bottom ($b$) \\
-$C_2$ (deg~3) & $\mathbb{Q}(\sqrt{13})$ & Electron ($e^-$) & Muon ($\mu^-$) & Tau ($\tau^-$) \\
-$C_4$ (deg~3) & $\mathbb{Q}(\sqrt{13})$ & $\nu_e$ & $\nu_\mu$ & $\nu_\tau$ \\
-\bottomrule
-\end{tabular}
-\caption{Fermionic particle mapping: 4 spacetime DOFs $\times$ 3 generations $=$ 12 fermions.}
-\end{table}
-
-\subsection{Antiparticles}
-
-Antiparticles correspond to the \textbf{reverse traversals} of the directed triangular cycles (Feynman--St\"uckelberg interpretation):
-\begin{itemize}[nosep]
-    \item $\Delta_1$: $A \to C_2 \to C_4 \to A$ (matter) vs.\ $A \to C_4 \to C_2 \to A$ (antimatter)
-    \item $\Delta_2$: $A \to X_{17} \to C_1 \to A$ vs.\ $A \to C_1 \to X_{17} \to A$
-    \item $\Delta_3$: $A \to X_{17} \to C_3 \to A$ vs.\ $A \to C_3 \to X_{17} \to A$
-\end{itemize}
-No additional geometric points are required. This implies that the construction treats particle \emph{types} and antiparticle \emph{types} with perfect symmetry---consistent with observation, where every known particle has a corresponding antiparticle~\cite{pdg2024}.
-
-The observed \textbf{matter--antimatter abundance asymmetry} (baryogenesis) is a distinct, dynamical question. The Standard Model Lagrangian also treats particles and antiparticles symmetrically at tree level; the observed matter dominance requires CP~violation, which arises from higher-order effects (the CKM matrix phase). In the geometric framework, the structural basis for this asymmetry is provided by Theorem~3 (chiral asymmetry): the construction inherently breaks left--right symmetry, and the three generations have unequal triangle types ($\Delta_1$ equilateral; $\Delta_2$, $\Delta_3$ right triangles), providing the geometric substrate for CP~violation.
-
-\subsection{Summary Count}
-
-\begin{center}
-\begin{tabular}{@{}lrl@{}}
-\toprule
-\textbf{Category} & \textbf{Count} & \textbf{Geometric Origin} \\
-\midrule
-Gauge bosons & 12 types, 4 classes & 12 necessary points \\
-Fermions & 12 & 4 spacetime DOFs $\times$ 3 triangles \\
-Scalar boson & 1 & 1 emergent node \\
-\midrule
-\textbf{Total types} & \textbf{17} & \textbf{17 points} \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-% ============================================================
-% SECTION 4: FALSIFIABLE STRUCTURAL PREDICTIONS
-% ============================================================
-\section{Falsifiable Structural Predictions}
-
-A rigorous geometric derivation of physics must produce parameter-free, falsifiable predictions that deviate from standard parametric assumption. The $17$-point structure mandated by the recursive Vesica Piscis stricture forces the following exact mathematical consequences (validated independently via geometric point-culling arrays available at \url{https://github.com/EdTheWonder/real}):
-
-\subsection{Normal Neutrino Mass Hierarchy}
-The construction generates three distinct generational triangles ($\Delta_1, \Delta_2, \Delta_3$). 
-
-\textbf{Methodology:} 
-By defining the topological interaction depth as the geometric distance to the symmetry-breaking Higgs node $X_{17}$, we sum the internal path potentials $D(\Delta_i) = \sum_{j \in \Delta_i} \text{dist}(j, X_{17})$. Generation I ($\Delta_1$) operates naturally independent of $X_{17}$, leaving it structurally isolated. However, $\Delta_2$ and $\Delta_3$ inherently rely on node $X_{17}$ to enclose their respective right triangles. Computing the geometric bounds rigorously outputs $D(\Delta_1) < D(\Delta_2) = D(\Delta_3)$, permanently segregating the lowest interaction state from the upper two.
-
-\textbf{Prediction:} The absolute scalar masses of the three spatial degrees of freedom strictly require a Normal Hierarchy ($m_1 < m_2 \approx m_3$). \\
-\textbf{Falsification:} Detection of an Inverted Neutrino Hierarchy ($m_3 \ll m_1 \approx m_2$) by terrestrial (e.g., KATRIN) or cosmological mass sum surveys (e.g., DESI, Euclid).
-
-\subsection{Quantum Phase Interference ($\theta_{13}$ Prediction)}
-Generation 1 possesses exact tree-level symmetries that are broken only when Feynman phase integrals are applied across the discrete topology. 
-
-\textbf{Methodology:} 
-Quantum mechanics mandates that macroscopic transition amplitudes between discrete nodes cannot be treated as real, ``phase-free'' scalars. Each geometric node $n$ must carry a complex phase weight $e^{i S_{path}/\hbar}$, where the action $S_{path}$ is strictly proportional to the radial geometric distance from the structural origin $A$. Constructing the complex geometric overlap matrix $S_{ij} = \langle f_i | f_j \rangle$, we evaluate the phase states for the three generational triangles ($\Delta_1, \Delta_2, \Delta_3$). 
-The nodes comprising Generation I ($A, C_2, C_4$) lie exclusively at integer multiples of the unit radius (distances $0$ and $r$). Consequently, their phase factors evaluate entirely to the real axis ($e^{i \cdot 2\pi(1)} = 1$), yielding constructive, phase-free paths. However, Generations II and III structurally depend on node $X_{17}$, which is geometrically isolated at distance $r\sqrt{3}/2$. This offset injects an irreducible, irrational complex phase perturbation ($e^{i \pi \sqrt{3}} \approx 0.69 - 0.71i$).
-
-\textbf{Prediction:} The exact $\theta_{13}$ tree-level condition of $0^\circ$ is mathematically broken the instant continuous phase wavefunctions are superimposed over the static scaffold. The chiral injection of $X_{17}$ natively bounds the reactor angle to $\sin^2\theta_{13} > 0$. \\
-\textbf{Falsification:} The current NuFIT 5.2 global fit establishes $\sin^2\theta_{13} = 0.022 \pm 0.0006$. Pure geometric phase integration must natively cross-section the $0.022$ bound dynamically; a return to exact zero via phase cancellation would falsify the chiral dominance of $X_{17}$. 
-
-\subsection{Topological Solar Mixing ($\theta_{12} = 31.63^\circ$)}
-Assuming flavor eigenstates embed geometrically across the subset array elements, establishing their base vectors $\vec{v}$ depends entirely on topological weight (node degree: the number of atomic lines touching that node, as established in Theorem~4).
-
-\textbf{Methodology:}
-Counting atomic line contacts directly from the 21 edges in the Rust engine output (see \texttt{gen1\_full\_data.txt}) yields the verified degree sequence for the triangle-participating nodes: $\{d_A = 5,\; d_{C_1} = 4,\; d_{C_2} = 3,\; d_{C_3} = 4,\; d_{C_4} = 3,\; d_{X_{17}} = 4\}$. We populate three 6-dimensional vectors aligning with $[A, C_1, C_2, C_3, C_4, X_{17}]$ for the three generational triangles:
-\begin{align*}
-\vec{v}_1 &= [5, 0, 3, 0, 3, 0] \quad (\text{For } \Delta_1:\; A, C_2, C_4) \\
-\vec{v}_2 &= [5, 4, 0, 0, 0, 4] \quad (\text{For } \Delta_2:\; A, C_1, X_{17}) \\
-\vec{v}_3 &= [5, 0, 0, 4, 0, 4] \quad (\text{For } \Delta_3:\; A, C_3, X_{17})
-\end{align*}
-Upon unit normalization $\hat{v}_i = \vec{v}_i / \|\vec{v}_i\|$, we compute the symmetric geometric overlap matrix $S_{ij} = \hat{v}_i \cdot \hat{v}_j$, yielding:
-\[
-S = \begin{pmatrix} 1 & 0.5050 & 0.5050 \\ 0.5050 & 1 & 0.7193 \\ 0.5050 & 0.7193 & 1 \end{pmatrix}
-\]
-The equality $S_{12} = S_{13}$ is forced by the exact reflection symmetry between $C_1$ and $C_3$ (both degree 4). Diagonalizing $S$ via Symmetric L\"owdin Orthogonalization yields the mixing rotation $U = S^{-1/2}$.
-
-\textbf{Prediction:} The corrected analytic computation yields $\sin^2\theta_{12} = 0.2751$, corresponding to the solar angle $\theta_{12} = 31.63^\circ$. Crucially, the pure structural reflection symmetry between the Generation 2 and Generation 3 subset spaces ($\vec{v}_2$ and $\vec{v}_3$) mandates \textit{exact atmospheric maximality} ($\theta_{23} = 45^\circ$). \\
-\textbf{Falsification (RG Topological Bounds):} NuFIT~5.2 establishes $\theta_{12} \approx 33.4^\circ$ and $\theta_{23} \approx 49.2^\circ$. Our framework natively attributes the $4.2^\circ$ deviation in $\theta_{23}$ to Renormalization Group (RG) vacuum running. The pure structural prediction of precisely $45^\circ$ establishes the formal non-perturbative symmetry bound at the lattice cutoff scale ($M_X$). Bridging this geometric zero-point dynamic to the experimental $M_Z$ pole requires explicitly coupling the continuous Standard Model beta functions directly into the discrete scalar gradient limits, leaving the explicit continuous tracking of the flowing heavy $\tau$-Yukawa cascade as an open topological integration problem.
-
-\subsection{Exact Dark Matter Kinematics (Rotation Curves)}
-Macroscopic intersection bounds functionally abandon classical point-mass approximations, expanding into geometric overdensities that provide physical inertial drag mimicking dark matter halos.
-
-\textbf{Methodology:} 
-Iterating the exact placement geometries of recursive spatial sets computationally evaluates local radial area densities $\rho_{geom}(r)$. Due to the overlapping radial boundaries of the generation spheres, the geometric mesh accumulates topological nodes exclusively matching a volumetric decay profile of $\rho_{geom}(r) \propto 1/r^2$. Passing this rigid, unparameterized density into standard Newtonian spherical integration yields the kinetic macroscopic velocity profile $V^2 = G \int_0^R \rho_{geom} dV / R$.
-
-\textbf{Prediction:} The $\rho_{geom} \propto 1/r^2$ topological constraint forces the acceleration derivative $dv/dr \to 0$, serving as a rigorous top-down mathematical proof that recursive topology natively enforces explicitly flat galactic rotation curves without exotic dark-matter particles. \\
-\textbf{Falsification:} This absolute threshold was dynamically integrated and overlaid against standard high-precision 21cm kinematic data from the SPARC database (specifically tracing the 30 kiloparsec bounds of NGC 3198). The topological drag merged with baryonic distribution yielding a total kinematic overlay error of exactly $2.39\%$. Theoretical derivations establishing geometric density models failing to match the $150$ km/s asymptotic threshold for matching baryonic densities falsify the macroscopic projection.
-
-% ============================================================
-% SECTION 5: CROSS-GENERATIONAL INVARIANTS \& CONVERGENCE
-% ============================================================
-\section{Cross-Generational Invariants \& Convergence}\label{sec:crossgen}
-
-The lattice construction is recursive: each of the 21 atomic lines serves as the diameter for a new Vesica Piscis. We have computationally verified the geometric invariants up through Generation 4 (from 17 to over 6.5 million discrete spatial nodes). 
-
-\subsection{Exact Invariants}
-Across 4 generations of recursion, the following quantities are invariant constraints:
-
-\begin{table}[h]
-\centering
-\begin{tabular}{@{}lll@{}}
-\toprule
-\textbf{Invariant} & \textbf{Value} & \textbf{Status} \\
-\midrule
-Scaffolding / Edge ratio & $(1+\sqrt{3})/2 \approx 1.366$ & Exact (Gen~2--4) \\
-Sole irrational & $\sqrt{3}$ & Confirmed (2{,}769 ratios) \\
-Upper spectral bound & 1 & Proven \\
-Lower spectral bound & $\to 0$ & Asymptotic \\
-Euler faces $=$ unique ratios & $F = E - V + 2 = 6$ & Theorem (Gen~1) \\
-\bottomrule
-\end{tabular}
-\caption{Invariant quantities across recursive generations.}
-\end{table}
-
-\noindent The spatial invariant $\Phi = (1+\sqrt{3})/2$ locks absolutely at Generation 2 and persists perfectly through Generation 4 (6.5 million nodes). This fixed hemispheric split exactly dictates the collisionless 67.8$\times$ Dark Matter parameter independently of recursion depth. 
-
-\subsection{Fixed-Point Logarithmic Convergence (RG Flow)}
-By computing the Graph Laplacian eigenspectrum natively at each generation, the tree-level topological observables dynamically flow toward their experimental targets, mirroring the Renormalization Group equations of continuum field theory:
-
-\begin{itemize}
-    \item \textbf{Muon $g-2$ Anomaly:} Extracted from the discrete random-walk return amplitudes on the spatial graph, evaluating to $134\%$ deviation at Generation 1. The geometric anomaly sequentially compresses at each recursion scaling down to $47\%$ (Gen 2), $32\%$ (Gen 3), and $16\%$ (Gen 4). Rather than bounding to zero independently, the discrete vacuum topology mathematically tracks toward an asymptotic limit mirroring the QED 1-loop $\alpha/2\pi$ bound, though formally isolating this precise convergence threshold requires probing ultra-deep recursion generations extending beyond current computational execution capacities.
-    \item \textbf{W/Z Boson Mass Ratio:} Extracted from the localization of Laplacian eigenmodes, starting at $1.7\%$ deviation (Gen 1) and executing a damped oscillation, bounding to a $4.7\%$ precision match ($\cos\theta_W \approx 0.923$) at Generation 4.
-    \item \textbf{Solar Mixing Angle ($\theta_{12}$):} The base Generation 1 symmetry yields exactly $31.63^\circ$. Parity violation at Generation 2 natively shifts this value by exactly $+1.375^\circ$. Extending to Generations 3 and 4 mathematically proves that this geometric running is not additive but scales inversely with the log of the relative spatial volume ($\sim 1/\ln(V_n / V_1)$). Evaluated as a fixed-point RG limit, the geometric perturbation drives the macroscopic mixing angle asymptotically to $33.44^\circ$ at infinite recursive depth, perfectly matching the NuFIT central boundary.
-\end{itemize}
-
-% ============================================================
-% SECTION 6: TOPOLOGICAL INVARIANTS
-% ============================================================
-\section{Topological Invariants}
-
-\noindent\textbf{Euler's formula.} The Gen~1 graph is a connected planar graph with $V = 17$, $E = 21$. By Euler's formula for planar graphs:
-\[
-    F = E - V + 2 = 21 - 17 + 2 = 6
-\]
-The number of topological faces equals the number of unique atomic ratios. This is a theorem, not a numerical coincidence.
-
-\medskip
-
-\noindent\textbf{Fermat prime.} The number 17 is a Fermat prime: $17 = 2^{2^2} + 1$. Gauss proved (1796) that a regular $n$-gon is constructible by compass and straightedge if and only if $n$ is a product of distinct Fermat primes and a power of~2~\cite{gauss}. The construction uses the first Fermat prime (3, via $\sqrt{3}$) and produces the third Fermat prime (17) as its point count.
-
-% ============================================================
-% SECTION 7: THE DISCRETE GRAPH LAGRANGIAN
-% ============================================================
 \section{The Discrete Geometric Lagrangian}\label{sec:lagrangian}
 
-If this rigid geometry truly structures physical fields, it must formally map onto the continuum language of Lagrangian mechanics ($S = \int \mathcal{L} \, d^4x$). In a discrete causal lattice, space does not exist continuously between points; the continuous spatial gradient operator $\nabla^2$ must natively map to its discrete spectral equivalent, the Graph Laplacian $\Delta = \mathbf{D} - \mathbf{A}$.
+If this rigid geometry structures dynamic fields, it must formally map onto a discrete scalar topological action. In a discrete causal lattice, space does not exist continuously between points; the continuous spatial gradient operator $\nabla^2$ must natively map to its discrete spectral equivalent, the Graph Laplacian $\Delta = \mathbf{D} - \mathbf{A}$.
 
 Applying standard Lattice Field Theory mathematics to the complete 17-point Generation 1 topology yields an exact, parameter-free derivation of a traditional scalar topological action:
 \begin{equation}
 S = \frac{1}{2} \vec{\phi}^T \Delta \vec{\phi} - \frac{1}{2} \vec{\phi}^T \mathbf{M} \vec{\phi} - \frac{\alpha}{3!} \sum_{i,j,k \in \text{Triangles}} \phi_i \phi_j \phi_k
 \end{equation}
 
-Here, each continuum component relies strictly on derived geometric operators:
+Here, each component relies strictly on derived geometric operators:
 \begin{enumerate}
-    \item \textbf{Kinetic Operator ($\Delta$):} The kinematic propagation of the $\phi$ field across empty space is strictly constrained by the 21 atomic lines forming the symmetric $17\times 17$ Graph Laplacian. Numerical extraction proves the nullity of this matrix is exactly 1, guaranteeing a unique, translation-invariant degenerate vacuum ground state ($\Delta \vec{1} = \vec{0}$).
-    \item \textbf{Mass Matrix ($\mathbf{M}$):} Consistent with the Machian proof in Section~2, the topological mass of a node equates to its absolute geometric centrality. We construct the strictly diagonal mass matrix $\mathbf{M} = \text{diag}(V_i)$ where $V_i = \sum_{j} D_{ij}$. Uncalibrated numerical extraction reveals that boundary nodes structurally possess the largest inertial resistance (mass matrix amplitude $28.3r$), while the symmetric origin possesses the lightest internal geometric coupling.
-    \item \textbf{Interaction Vertices (Phase Separation):} A 3-point fundamental interaction ($\phi^3$) maps topologically to closed 3-cycles. Computational extraction identifies exactly three fundamental coupling triangles ($\Delta_1$: $A-C_1-C_4$, $\Delta_2$: $A-C_2-X_{17}$, $\Delta_3$: $A-C_3-X_{17}$). Consistent with the Feynman quantum phase validations in Section 4, the Lagrangian interaction enforces that purely rational path symmetries (Gen I on integer radii) bypass phase interference entirely, while irrational phase vertices ($X_{17}$ in Gen II and III) rigorously synthesize observable chiral dynamics.
+    \item \textbf{Kinetic Operator ($\Delta$):} The kinematic propagation of the $\phi$ field is strictly constrained by the 21 atomic lines forming the symmetric $17\times 17$ Graph Laplacian. Numerical extraction proves the nullity of this matrix is exactly 1, guaranteeing a unique, translation-invariant degenerate vacuum ground state ($\Delta \vec{1} = \vec{0}$).
+    \item \textbf{Mass Matrix ($\mathbf{M}$):} The topological centrality of a node dictates its $L^2$ coupling. We construct the strictly diagonal matrix $\mathbf{M} = \text{diag}(V_i)$ where $V_i = \sum_{j} (D_{ij}/r)^2$. The symmetric origin possesses the lowest scalar coupling; boundary and $\mathbb{Q}(\sqrt{13})$ nodes carry the largest $V_i$.
+    \item \textbf{Interaction Vertices:} A 3-point fundamental interaction ($\phi^3$) maps topologically to closed 3-cycles. Computational extraction identifies exactly three fundamental coupling triangles ($\Delta_1$: $A-C_2-C_4$, $\Delta_2$: $A-C_1-X_{17}$, $\Delta_3$: $A-C_3-X_{17}$). 
 \end{enumerate}
 
-By equating geometry to dynamics, the discrete algorithm natively outputs a fully solvable Hamiltonian lattice framework capable of executing path-integral sums without manual insertion of spacetime backgrounds or floating mass hierarchies.
+\subsection{Analytical Generational Scale Ratios}
 
-\subsection{Analytical Generational Mass Ratios}
+We can exploit the Discrete Lagrangian directly to derive the tree-level base scalar hierarchies of the three triangles without internal fitting parameters. 
 
-We can now exploit the Discrete Lagrangian directly to derive the tree-level bare mass scalars of the three fundamental fermionic generations without any internal fitting parameters. 
+Reducing the full 17-component positional vector field $\vec{\phi}$ into effective domain macro-states natively corresponding to the three triangles ($\phi_1 \leftrightarrow \Delta_1, \phi_2 \leftrightarrow \Delta_2, \phi_3 \leftrightarrow \Delta_3$), we can evaluate the effective scalar potential. By isolating the quadratic term $\frac{1}{2} \vec{\phi}^T \mathbf{M} \vec{\phi}$, we integrate over the intrinsic geometric potentials of the anchor nodes. 
 
-Reducing the full 17-component positional vector field $\vec{\phi}$ into effective domain macro-states natively corresponding to the three generational triangles ($\phi_1 \leftrightarrow \Delta_1, \phi_2 \leftrightarrow \Delta_2, \phi_3 \leftrightarrow \Delta_3$), we can evaluate the effective scalar potential. By isolating the quadratic mass term $\frac{1}{2} \vec{\phi}^T \mathbf{M} \vec{\phi}$, we integrate over the intrinsic Machian geometric potentials of the anchor nodes. 
+Generation I ($\Delta_1$: $A-C_2-C_4$) relies exclusively on the spatial origin $A$. In contrast, Generations II and III ($\Delta_2, \Delta_3$) critically depend on $X_{17}$ to geometrically seal their discrete structural paths.
 
-Generation I ($\Delta_1$: $A-C_1-C_4$) relies exclusively on the spatial origin $A$. In contrast, Generations II and III ($\Delta_2, \Delta_3$) critically depend on $X_{17}$, the symmetry-breaking Higgs scalar point, to geometrically seal their discrete structural paths.
-
-Extracting exactly from the distance matrix of the initial geometry:
+Extracting from the $L^2$ potentials at unit radius:
 \begin{itemize}
-    \item $V_A = \sum D(A, j) \approx 18.23r$
-    \item $V_{X_{17}} = \sum D(X_{17}, j) \approx 18.47r$
+    \item $V_A = \sum_j (D_{A,j}/r)^2 \approx 21.75$
+    \item $V_{X_{17}} = \sum_j (D_{X_{17},j}/r)^2 \approx 26.07$
 \end{itemize}
 
-This yields the deterministic tree-level generation mass scales directly from geometric centrality:
+This yields the deterministic tree-level scalar scales directly from geometric centrality:
 \begin{align*}
-m_{\rm I}^2 &\propto V_A \approx 18.23 \\
-m_{\rm II}^2 &= m_{\rm III}^2 \propto V_A + V_{X_{17}} \approx 36.70
+m_{\rm I}^2 &\propto V_A \approx 21.75 \\
+m_{\rm II}^2 &= m_{\rm III}^2 \propto V_A + V_{X_{17}} \approx 47.82
 \end{align*}
 
-The predicted baseline mass ratio analytically outputs exactly:
+The predicted baseline ratio is:
 \[
-\frac{m_{\rm II, III}}{m_{\rm I}} = \sqrt{\frac{V_A + V_{X_{17}}}{V_A}} = \sqrt{\frac{36.70}{18.23}} \approx 1.42
+\frac{m_{\rm II, III}}{m_{\rm I}} = \sqrt{\frac{V_A + V_{X_{17}}}{V_A}} \approx 1.48
 \]
-
-This is the first dynamic parameter-free prediction synthesized purely from the Lagrangian operators. Rather than relying on exponential RGE scaling simply to fit observed mass variance, the 17-point discrete architecture structurally dictates that upper fermion generations are intrinsically and systematically heavier specifically because their topological wave-paths are bound to the large invariant inertial potential of the Higgs coupling point ($X_{17}$).
+% Citation removed pending complete formalization
 % ============================================================
-% SECTION 8: GRAVITATIONAL DYNAMICS
+% PART II: PHYSICAL ISOMORPHISMS (DERIVATIONS)
 % ============================================================
-\section{Gravitational Dynamics: The Einstein Field Equations}
+\newpage
+\part{Physical Isomorphisms (Derivations)}
 
-We now examine the geometric structure of gravitation within this framework. Every foundational geometric step is a repeatable consequence of the recursive Vesica Piscis algorithm. While the baseline limit strictly utilizes topological derivations (17 points, 21 atomic lines, centrality $V_i$, Graph Laplacian $\Delta$, macroscopic 4-volume $V_4$, bounding vector $c=\sqrt{3}$, and scaffolding scalar $\Phi=(1+\sqrt{3})/2$), scaling these outputs into continuous dynamics definitively requires establishing bridging boundaries tracking outward from these internal discrete limits.
+\section{Physical Derivations from the Geometric Kernel}\label{sec:physics}
 
-\subsection{Discrete Curvature from the Graph}
+The structural correspondences between the 17-point geometry and the Standard Model arise from applying standard analytical physics to the Lean-verified discrete topological baseline. The table below summarizes these correspondences, distinguishing the Lean-verified geometric premise from the analytical physical derivation.
 
-The Graph Laplacian $\Delta = \mathbf{D} - \mathbf{A}$ (established in Section \ref{sec:lagrangian}) functions natively as the discrete analogue of the curvature operator. The combinatorial curvature at each node (Ollivier-Ricci form, computed directly from the 21 atomic edges) evaluates positive at high-centrality nodes ($X_{17}, C_1, C_3$) and exactly zero at free leaves ($B, P_4, P_6$)---producing precisely the potential profile required for a Machian gravitational field.
+\subsection{Comprehensive Standard Model Accounting}
+The 17-point algorithm does not generate 61 individual nodes for the 61 physical elementary particles. Instead, it generates the exact mathematical generators and dimensions required to produce the Standard Model architecture. The \textbf{Geometric Generator} column lists Lean-verified topological facts; the \textbf{Mathematical Mechanism} column describes the standard analytical derivation applied to those facts.
 
-This curvature is not postulated; it is mathematically identical to the second finite difference of the adjacency matrix produced purely by the straightedge lines.
+\begin{table}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}p{0.15\linewidth} p{0.25\linewidth} p{0.25\linewidth} p{0.3\linewidth}@{}}
+\toprule
+\textbf{Physics Component} & \textbf{Standard Model} & \textbf{Lean-Verified Geometric Premise} & \textbf{Analytical Derivation} \\
+\midrule
+\textbf{Gluons} & $SU(3)_C$ (8 states) & 8 degree-2 boundary nodes (Lean: Thm~4) & Adjoint rep dimension: $N^2-1=8 \implies \mathfrak{su}(3)$. \\
+\textbf{Weak Bosons} & $SU(2)_L$ (3 states) & 3 degree-1 leaf nodes (Lean: Thm~4) & Adjoint rep dimension: $N^2-1=3 \implies \mathfrak{su}(2)$. \\
+\textbf{Photon} & $U(1)_Y$ & Single degree-5 origin node $A$ (Lean: Thm~4) & Central $U(1)$ symmetry locus. \\
+\textbf{Higgs VEV} & $T_3=0$ SSB locus & $X_{17}$ lies on axis, fixed under mirror parity (Lean-verified) & VEV interpretation of $X_{17}$ magnitude $v = r\sqrt{3}/2$. \\
+\textbf{Generations} & 3 (e/$\mu$/$\tau$) & Exactly 3 triangles; computationally certified candidate 2-simplex sector & Analytical identification with topological index yields 3 generations. \\
+\textbf{Quarks} & Color-charged fermions & $C_1, C_3$: $d^2 = r^2/4 \in \mathbb{Q}$ (Lean: Thm~5) & Native $\mathbb{Q}(\sqrt{3})$ coupling to boundary. \\
+\textbf{Leptons} & Colorless fermions & $C_2, C_4$: $d^2 = 13r^2/4$ (Lean: Thm~5) & $\mathbb{Q}(\sqrt{13})$ orthogonality $\implies$ $SU(3)$ singlets. \\
+\textbf{Gravity} & Curvature & $S_{\text{FR}} = -15$ (Lean-verified) & Forman-Ricci $\to$ Einstein-Hilbert in continuum limit. \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\subsection{Continuum Limit via Recursion}
+\noindent In each row, the third column is a Lean-verified fact about the discrete graph; the fourth column is the analytical physical derivation applied to that fact using standard representation theory, spectral graph theory, or discrete differential geometry.
 
-The algorithm's recursion rule dictates that every atomic line becomes the new radius $r$. As generations propagate (Gen 1: 17 points $\to$ Gen 2: 132 $\to$ Gen 4: millions), the discrete point set becomes arbitrarily dense.
+\subsection{Parity Violation and Chiral Asymmetry}
+The construction has an intrinsic left--right asymmetry: the node $X_{17} = (50\sqrt{3},\, 0)$ exists on the $+x$ side of the origin $A$, with no mirror node at $(-50\sqrt{3},\, 0)$ (Theorem 3). This geometric chirality permanently breaks left--right symmetry for all $X_{17}$-coupled interactions, providing a structural origin for parity violation in the weak interaction~\cite{wuexp}.
 
-In this strictly infinite generation limit:
-\begin{itemize}[nosep]
-    \item The Euclidean distance matrix $D_{ij}$ converges to a smooth metric tensor $g_{\mu\nu}(x)$.
-    \item The discrete Laplacian $\Delta$ converges to the continuous Laplace-Beltrami operator $\nabla^2$ on the manifold.
-    \item The centrality scalar $V_i = \sum_j D_{ij}$ converges to the smooth gravitational potential $\Phi(x)$.
-\end{itemize}
+\subsection{Gravitational Dynamics and Discrete Curvature}
 
-Crucially, this limit is globally invariant: the spatial parameter $\Phi = (1+\sqrt{3})/2$ and the absolute 4-volume $V_4 = 2\sqrt{3}\, r^2$ remain exactly locked at every generation, independent of recursion depth.
+\noindent\textbf{Lean-verified premise:} The Forman-Ricci curvature $\mathbf{F}(u,v) = 4 - \deg(u) - \deg(v) + 3|\Delta_{u,v}|$ is computed exactly over all 21 edges. The Lean kernel evaluates the total discrete action $S = \sum \mathbf{F}(u,v) = -15$. This is a topological invariant of the Gen~1 graph---analogous to how every cube has Euler characteristic $V - E + F = 2$.
 
-\subsection{Action Variation and the Einstein Tensor}
+\noindent\textbf{Analytical derivation:} In discrete differential geometry, the Forman-Ricci scalar curvature is the standard combinatorial analogue of the Riemann curvature tensor restricted to 1-simplices. The negative global curvature ($S = -15$) certifies that the graph is intrinsically curved. We conjecture that, by analogy with established convergence results for Regge calculus on triangulated manifolds, as recursion depth $n \to \infty$ and the mesh density increases, sums of discrete Forman-Ricci curvatures on this recursive construction could converge to the continuous Einstein-Hilbert action $\int R \sqrt{-g}\, d^4x$. Establishing this convergence rigorously for the specific fractal-like recursive geometry considered here remains an open problem. The discrete geometry thus provides a native, parameter-free geometric framework for gravitational curvature.
 
-Recall the Discrete Geometric Lagrangian derived natively from the Graph:
-\begin{equation}
-S = \frac{1}{2} \vec{\phi}^T \Delta \vec{\phi} - \frac{1}{2} \vec{\phi}^T \mathbf{M} \vec{\phi} - \frac{\alpha}{3!} \sum \phi_i \phi_j \phi_k
-\end{equation}
+\subsection{Generational Recursion as the Engine of Dynamics}
 
-\begin{itemize}[nosep]
-    \item The kinetic term $\frac{1}{2}\vec{\phi}^T \Delta \vec{\phi}$ encodes the background curvature. Its second variation with respect to the embedding metric yields the discrete analogue of the continuous Einstein-Hilbert term.
-    \item The mass term $\frac{1}{2}\vec{\phi}^T \mathbf{M} \vec{\phi}$ encodes the system's stress-energy density directly via centrality gradients ($\nabla V_i$).
-\end{itemize}
+The Standard Model and General Relativity are continuous dynamic theories. In this framework, dynamics (movement, expansion, and time evolution) are not governed by an external background clock, but are mathematically identical to the unceasing recursive execution of the algorithm itself ($Gen_n \to Gen_{n+1}$).
 
-Because identical spatial distances structurally anchor both the graph Laplacian $\Delta$ and the centrality matrix $\mathbf{M}$, varying the discrete geometric action $S$ functionally with respect to the lattice metric inherently isolates the topological Dirichlet energy bounds $\delta S/\delta w_{ij} = (\phi_i - \phi_j)^2$. While this linearized variance establishes the foundational scalar potential for a pure topological stress-tensor upon the lattice boundary, mapping this scalar natively into the required non-linear curvature components of relativistic gravity requires extending the discrete proof formally into the continuum manifold limit:
-\begin{equation}
-G_{\mu\nu} \propto \lim_{n \to \infty} \Delta(\mathcal{G}_n) \approx 8\pi G \, T_{\mu\nu}
-\end{equation}
-where the topological limits natively emerging from the discrete Laplacian specifically enforce the exact geometric unweighted inertial Machian mass equivalents constraining continuous macro-scale metric convergence fields.
+\begin{theorem}[Recursive Scale Consistency]
+Let the algorithm's recursive step be defined as the operator $\mathcal{T}$, mapping the geometric state $G_n$ to $G_{n+1}$ by converting every atomic segment of $G_n$ into the fundamental radius of a new localized Vesica Piscis state. 
 
-\subsection{Algebraic Derivation of the Gravitational Coupling}
+\textbf{Proof:} The Lean formalization certifies that the recursive ansatz employs an explicitly computable scale factor in $\mathbb{Q}(\sqrt{3})$, and that its first iterates are positive and bounded above by the seed radius in the cases checked. Interpreting repeated application of this scale-consistent recursive ansatz as a directed dynamical process is analytical.
+\end{theorem}
 
-By matching the discrete topological vacuum energy variation to the continuous Einstein-Hilbert action form, the geometric scalar scaling $8\pi G$ is completely fixed by the framework's native algebraic invariant constants:
-\begin{align*}
-V_4 &= 2\sqrt{3}\, r^2 \quad \text{(from Theorem 8)} \\
-c &= \sqrt{3} \quad \text{(from Theorem 8)} \\
-\Phi &= \frac{1+\sqrt{3}}{2} \quad \text{(Scaffolding ratio, invariant)}
-\end{align*}
+\textbf{Physical Derivation:} In continuous physics, dynamics are defined by a time-evolution operator $U(t) = e^{-iHt}$, and scale-dependencies are governed by the Renormalization Group (RG) flow. In this algorithmic baseline, the recursive operator $\mathcal{T}$ intrinsically unifies both:
+\begin{enumerate}
+    \item \textbf{Cosmological Expansion:} Because every atomic segment spawns a new spatial generation, the number of nodes and the effective volume of the graph grow exponentially with $n$, providing a strict, parameter-free geometric origin for spatial expansion.
+    \item \textbf{The Continuum Limit (Dynamics):} As recursion depth $n \to \infty$, the discrete segments become arbitrarily dense. The stepwise application of $\mathcal{T}$ limits to continuous dynamic evolution, allowing the discrete action evaluated by the graph Laplacian at finite $n$ (Section \ref{sec:lagrangian}) to smoothly converge into the continuous Lagrangians of Quantum Field Theory. 
+\end{enumerate}
 
-Because the geometric vacuum density naturally scales inversely with the metric 4-volume, the exact algebraic conversion of the coupling resolves identically to:
-\begin{equation}
-8\pi G = \frac{8\pi}{\Phi \times (V_4 / c^4)} \quad \implies \quad G = \frac{c^4}{\Phi \times V_4}
-\end{equation}
+Consequently, the 17-point graph is not a static lattice; it is the $n=1$ initial condition of an infinite recursive operator that mathematically necessitates causal physical dynamics.
 
-This constitutes an exact structural identity. Gravity is strictly modeled as the macroscopic gradient of geometric centrality upon the recursive Vesica Piscis lattice. The Einstein Field Equations $G_{\mu\nu} = 8\pi G T_{\mu\nu}$ arise natively as the pure large-scale continuum limit of the discrete point variation, bridging the 17-point discrete seed flawlessly into general relativity.
+\subsection{Absolute Topological Bounds (UV/IR Cutoffs)}
 
-% ============================================================
-% SECTION 9: QUANTUM CONSTANTS AND STRONG DYNAMICS
-% ============================================================
-\section{Quantum Constants and Strong Dynamics}
+The recursive execution of the algorithm ($Gen_n \to Gen_{n+1}$) is strictly deterministic. Because the intersection of distinct algebraic curves in the field $\mathbb{Q}(\sqrt{3})$ can never yield coincident coordinates unless the parent nodes are identical, the length $l$ of any generated atomic segment can strictly never equal zero. Similarly, because all subsequent constructions are topologically bound by the originating axiomatic radius $r$, no segment can exceed the initial radius. 
 
-The remaining fundamental continuum parameters are exactly solvable directly from the algorithm's discrete network components without external assumptions.
+Let $L$ be the set of all atomic segment lengths generated as $n \to \infty$. The Lean formalization verifies positivity and boundedness for the initial checked scaling iterates. A full theorem asserting $\forall l \in L, \quad 0 < l \le r$ for all recursively generated atomic lengths remains open.
 
-\subsection{Exact Fine-Structure Constant}
-The tree-level value scales effectively at $\alpha^{-1} = 137$ deriving cleanly from the raw 17-point combinatorics ($\binom{17}{2} + 1$). Higher topological limits introduce formal loop modifications strictly across the recursive parity-break fraction $\epsilon = 22/132$ (the exact asymmetry count bound internally across Generation 2):
-\begin{equation}
-\alpha^{-1}_{\text{dressed}} = 137 + \left(\frac{\epsilon}{6}\right) = 137 + \left(\frac{1}{36}\right) \approx 137.0278
-\end{equation}
-Compared to the CODATA 2026 value of $137.035999\dots$, the recursive parity-shift bridges the topological bound to a robust parameter-free matching error of $0.006\%$. Higher topological generation arrays natively operate sequentially tightening this precision without breaking the deterministic scaling normalization of the initial asymmetry limit mechanism.
+\noindent\textbf{Physical derivation (The Absence of Singularities):} In continuous Quantum Field Theory and General Relativity, interactions exhibit catastrophic divergences as distance $d \to 0$ (ultraviolet) or as scale $d \to \infty$ (infrared). In this algorithmic framework, the initial checked recursive scaling iterates remain strictly positive and below the seed radius, suggesting a possible \textbf{Ultraviolet (UV) cutoff} (a strictly non-zero minimum topological distance, functioning as an intrinsic Planck-scale bound) and an \textbf{Infrared (IR) cutoff} (the maximum structural radius $r$, functioning as a cosmological horizon). A full global proof that zero distances never arise and that all recursively generated atomic lengths remain bounded above by $r$ is left open.
 
-\subsection{SU(3) Algebra from the 8 Boundary Nodes}
-The 8 degree-2 boundary nodes ($K$, $L$, $M$, $N$, Top, Bot, $P_3$, $P_5$) form two disconnected 3-chains linked by precisely 6 internal edges. These 6 edges map identically to the 6 root vectors of the complex $SU(3)$ Lie algebra. 
+\subsection{The $\mathbb{Q}(\sqrt{13})$ Field Boundary and the Quark/Lepton Split}
 
-To formulate an $SU(3)$ topological mapping representation entirely upon continuous Euclidean limits necessitates restricting observations across explicit subsets. The 6 diagonal internal atomic segments bounding the set structurally parallel the 6 non-diagonal root vectors extending functionally outward from the 2 discrete vertical scaffolding limits which mirror the dimensionality of the Cartan subalgebra. While the isolated geometric bounded path mathematically houses identically the required 8 degrees of freedom corresponding to the strong force $SU(3)$ symmetries, formally evaluating the fully-complex non-commutative Gell-Mann commutation paths $[\lambda_a, \lambda_b] = 2i f_{abc} \lambda_c$ depends upon mapping the native unweighted network Laplacian identically onto extended finite Hilbert spaces mathematically beyond continuous discrete representations.
+\noindent\textbf{Lean-verified premise:} By Theorem~5, the exact squared distances from the internal nodes to $X_{17}$ split into two algebraic classes: $\{C_1, C_3\}$ couple at $d^2 = r^2/4 \in \mathbb{Q}$, while $\{C_2, C_4\}$ couple at $d^2 = 13r^2/4$, requiring the field extension $\mathbb{Q}(\sqrt{13})$. The Lean kernel further verifies that $\sqrt{13/4}$ has no representation in the $\mathbb{Q}(\sqrt{3})$ arithmetic model.
 
-\subsection{Structural Equivalence of $\hbar$}
-From the gravitational tensor evaluations mapping bounds recursively upon invariant continuous geometry constraints ($V_4 = 2\sqrt{3}\,r^2$ and $c = \sqrt{3}$), the unparameterized scalar density translates identically toward the fundamental discrete operational limit. Because the native 17-point graph constitutes a scale-free dimensionally invariant form, resolving external physical units empirically requires anchoring the internal scaling tensor directly to equivalent parameters. By fixing the foundational unit operation exclusively upon the fundamental Planck scale ($r \equiv \ell_P$), the action limits algebraically form:
-\begin{equation}
-\hbar \propto \frac{(\ell_P^2) \sqrt{3}}{2\pi \sqrt{3 - \sqrt{3}}} \times \left(1 + \frac{\Lambda V_4}{8\pi}\right)
-\end{equation}
-By explicitly assigning the metric origin directly upon external cosmological units, the geometric equivalence ceases operating physically independently and instead functions uniquely as a continuous structurally locked proportionality tracking exactly continuous continuum invariants.
+\noindent\textbf{Analytical derivation:}
+\begin{enumerate}
+    \item The nodes $\{C_1, C_3\}$ resolve natively within $\mathbb{Q}(\sqrt{3})$, allowing direct coupling with the $\mathbb{Q}(\sqrt{3})$-generated boundary (the 8 degree-2 nodes). In the language of representation theory, their coupling amplitudes to the boundary are non-zero, making them \textbf{color-charged} (Quarks).
+    \item The nodes $\{C_2, C_4\}$ require the algebraic extension $\mathbb{Q}(\sqrt{13})$. Because $\sqrt{13} \notin \mathbb{Q}(\sqrt{3})$, their coupling amplitudes to the degree-2 boundary evaluate to zero over the native field. They act as exact algebraic singlets under $SU(3)$ transformations---the definition of \textbf{Leptons}.
+    \item This algebraic field defect also serves as the structural mechanism for neutrino mass suppression: the $\sqrt{13}$ barrier geometrically forbids native scalar coupling to $X_{17}$, analytically paralleling the Seesaw Mechanism.
+\end{enumerate}
 
-\subsection{Evaluation of Extended Fractional Models}
-While the core physics derives directly from continuous metrics applied analytically strictly against the generation boundaries, attempts to derive fractional combinations directly simulating empirical measurements (such as defining proton mass through additive scalar chains) cannot rigorously replace dynamic Laplacian derivations. 
+\subsection{Emergent $(1,3)$ Lorentzian Spacetime}
+
+\noindent\textbf{Lean-verified premise:} The $4 \times 4$ distance sub-matrix restricted to $\{C_1, C_2, C_3, C_4\}$ has four exact eigenvalues with signature $(+,-,-,-)$ (Theorem~6, Lean-verified). 
+
+\noindent\textbf{Analytical derivation:} This perfect $(1,3)$ Minkowski signature yields a dimensionless geometric eigen-ratio:
+\[ \frac{|\lambda_0|}{|\lambda_3|} = \frac{3+\sqrt{3}}{1+\sqrt{3}} = \sqrt{3} \]
+This ratio defines a dimensionless geometric eigen-bound of the Lean-verified distance matrix; its identification with the physical speed of light $c$ would require a unit-matching correspondence between the atomic segment length and Planck-scale physics.
 
 % ============================================================
-% SECTION 10: QUANTUM FIELD THEORY FROM THE LATTICE
+% SECTION 11: SPECTRAL PROOFS OF SYMMETRIES
 % ============================================================
-\section{Quantum Field Theory from the Lattice}
+\section{Spectral Derivations from the Certified Symmetries}\label{sec:spectral_proofs}
 
-We now promote the Discrete Geometric Lagrangian (Section \ref{sec:lagrangian}) to a full quantum field theory utilizing exclusively the deterministic outputs of the Vesica Piscis algorithm. No external postulates, continuous spacetime backgrounds, free parameters, or ad-hoc numerology are introduced.
+The following three derivations apply standard analytical physics to the Lean-verified discrete invariants of Part~I.
 
-\subsection{The Classical Lattice Action}
-The foundational action relies precisely on the matrix bounds explicitly constructed from the straightedge intersections:
-\begin{equation}
-S = \frac{1}{2} \vec{\phi}^T \Delta \vec{\phi} - \frac{1}{2} \vec{\phi}^T \mathbf{M} \vec{\phi} - \frac{\alpha}{3!} \sum_{i,j,k \in \{\Delta_1,\Delta_2,\Delta_3\}} \phi_i \phi_j \phi_k
-\end{equation}
-\begin{itemize}[nosep]
-    \item \textbf{Kinetic term:} $\Delta$ is the exact $17\times 17$ Graph Laplacian built from the 21 atomic scaffolding lines.
-    \item \textbf{Mass term:} $\mathbf{M} = \operatorname{diag}(V_i)$ where geometric centrality $V_i = \sum_j D_{ij}$ is summed over all pairwise Euclidean distances.
-    \item \textbf{Interaction term:} Assessed strictly against the three closed triangular cycles ($\Delta_1, \Delta_2, \Delta_3$) isolated in Theorem 3.
-\end{itemize}
+\subsection{The Geometric Origin of Weak Isospin ($T_3$) and the $10 \oplus 7$ Split}
 
-\subsection{Quantization via Feynman Path Integral}
-Because the geometry is discrete, the quantum theory is defined analytically by summing over all field configurations across the discrete vertex nodes:
-\begin{equation}
-Z = \int \mathcal{D}\phi \, \exp\left( i S[\phi] \right)
-\end{equation}
-where the measure $\mathcal{D}\phi$ projects as the product sequence over the 17 lattice sites. Introducing external test sources $J_i$ sets the generating functional for correlation functions:
-\begin{equation}
-Z[J] = \int \mathcal{D}\phi \, \exp\left( i S[\phi] + i \sum J_i \phi_i \right)
-\end{equation}
-All Green functions, propagators, and S-matrix elements are obtained structurally by formal functional derivatives of $\ln Z[J]$. This is standard lattice QFT dynamically formulated upon the algorithm's geometric outputs.
+\noindent\textbf{Lean-verified premise:} The graph automorphism group is exactly $\mathbb{Z}/2$, consisting solely of the identity and a spatial parity mirror reflection $\mathbf{R}: y \to -y$ (Lean-verified). The three nodes on the $x$-axis ($A$, $B$, $X_{17}$) are fixed under $\mathbf{R}$.
 
-\subsection{Continuum Limit via Recursive Generations}
-The algorithmic recursion rule dictates that every atomic intersection resolves iteratively into the new scaling radius. Advancing towards infinite iterative depth:
-\begin{itemize}[nosep]
-    \item The distance matrix $D_{ij}$ pointwise converges to a smooth Riemannian metric $g_{\mu\nu}(x)$.
-    \item The Laplacian $\Delta$ converges analytically to the continuous Laplace-Beltrami operator $\nabla^2$.
-    \item Centrality potentials $V_i$ formulate directly into a smooth scalar field $\Phi(x)$ corresponding to gravitational potential.
-\end{itemize}
-Because the generation bounding scales $c = \sqrt{3}$ and $V_4 = 2\sqrt{3}\, r^2$ remain perfectly invariant at all depths, the limiting discrete domain perfectly adopts the relativistic bounds of $(1,3)$ Minkowski space:
-\begin{equation}
-S = \int d^4x \sqrt{-g} \left[ \frac{1}{2} (\partial_\mu \phi) g^{\mu\nu} (\partial_\nu \phi) - \frac{1}{2} m^2 \phi^2 - \frac{\alpha}{3!} \phi^3 + \cdots \right]
-\end{equation}
+\noindent\textbf{Formal Analytical Derivation:} Let $V \cong \mathbb{R}^{17}$ be the vector space spanned by the 17 nodes. Because $\mathbf{R}^2 = I$, the space decomposes into $\pm 1$ eigenspaces $V = V_{+} \oplus V_{-}$. The Lean~4 kernel formally verified (Theorem~\texttt{parity\_eigenspaces\_10\_7}) that the trace count induced by the mirror permutation on the 17-node basis is exactly 3 (the number of fixed axis nodes). This rigorous geometric constraint forces the exact eigenspace dimensions $\dim(V_{+}) = 10$ and $\dim(V_{-}) = 7$.
 
-\subsection{Emergence of the Standard Model QFT}
-Applying the formal continuum limit to each topological sector isolates the empirical Standard Model Lagrangian:
-\begin{itemize}[nosep]
-    \item \textbf{Gauge bosons:} The 13 non-spacetime vertex points ($A, B, P_4, P_6$, boundary nodes, $X_{17}$) behave dynamically as the gauge fields spanning $U(1)_Y \times SU(2)_L \times SU(3)_C$.
-    \item \textbf{Fermions:} The 4 bounding spacetime nodes identically mapped across the 3 internal triangles formulate strictly identically to the three independent generations of quarks and leptons.
-    \item \textbf{Higgs Scalar:} The isolated node $X_{17}$ functionally resolves as the scalar Higgs field where its vacuum expectation is exactly fixed by mitigating the effective bounded potential.
-\end{itemize}
+Defining the weak isospin operator $\hat{T}_3$ as the projection onto the antisymmetric subspace $V_{-}$, the node $X_{17}$ lies entirely in $V_{+}$ and has exactly zero weak isospin. This makes $X_{17}$ the natural candidate for the Spontaneous Symmetry Breaking (SSB) locus: it possesses a non-zero, parity-invariant scalar magnitude ($v = r\sqrt{3}/2$), analytically paralleling the vacuum expectation value required by the Goldstone theorem to break the electroweak symmetry and generate mass.
 
-The consequent continuum boundary condenses flawlessly into the Standard Model operator:
-\begin{equation}
-\mathcal{L}_{\text{SM}} = -\frac{1}{4} F_{\mu\nu} F^{\mu\nu} + i \bar{\psi} \gamma^\mu D_\mu \psi + |D_\mu H|^2 - V(H) + \text{Yukawa terms}
-\end{equation}
-While the unparameterized geometry isolates precisely the topological groups and continuum boundaries matching the Standard Model Lagrangian structure, realizing the exact continuous physical scaling of fundamental gauge weights, internal masses, and mixing matrices computationally necessitates coupling the discrete Laplacian explicitly into empirical physical parameters.
+\subsection{The Emergence of the Gauge Group Algebras}
+
+\noindent\textbf{Lean-verified premise:} The degree sequence (Theorem~4, Lean-verified) partitions the boundary into exactly two disconnected subsets:
+\begin{enumerate}[nosep]
+    \item \textbf{Degree-1 (Leaves):} $S_1 = \{B, P_4, P_6\}$, $|S_1| = 3$.
+    \item \textbf{Degree-2 (Confined):} $S_2 = \{K, L, M, N, \text{Top}, \text{Bot}, P_3, P_5\}$, $|S_2| = 8$.
+\end{enumerate}
+Because $S_1$ and $S_2$ share no edges, their spectral symmetries are independent.
+
+\noindent\textbf{Analytical derivation:} In standard representation theory, a Lie algebra $\mathfrak{su}(N)$ has adjoint dimension $N^2 - 1$. Setting $N^2 - 1 = 3$ identifies $\mathfrak{su}(2)$; setting $N^2 - 1 = 8$ identifies $\mathfrak{su}(3)$. Together with the degree-5 origin ($U(1)$), the Lean-verified boundary dimensions yield $1 + 3 + 8 = 12$ gauge generators, matching the Standard Model gauge group $U(1) \times SU(2) \times SU(3)$.
+
+\subsection{The Topological Dirac Operator and 3 Generations}
+
+\noindent\textbf{Lean-verified premise:} The graph contains exactly 3 triangles: $\Delta_1$, $\Delta_2$, $\Delta_3$ (Theorem~2). The Lean~4 kernel computationally certifies, within the bounded coefficient search used in the implementation, a candidate 3-generator 2-simplex sector.
+
+\noindent\textbf{Formal Analytical Derivation:} The 3-dimensional $C_2$ sector suggests, by analogy with the role of $b_2$ in smooth Atiyah--Singer index theory, that a suitably constructed discrete Dirac operator on this complex would have exactly 3 chiral zero-modes. Establishing this rigorously requires defining the operator explicitly and proving an index formula, which we identify as the central open problem connecting the geometric structure to fermionic generation counting.
 
 % ============================================================
-% SECTION 11: CONCLUSION
+% SECTION 12: ALGORITHMIC INVARIANCE AND FALSIFIABILITY
+% ============================================================
+\section{Algorithmic Invariance and Falsifiability}
+
+Because the Vesica Piscis construction relies on zero free parameters, this framework cannot be ``tuned'' to accommodate conflicting experimental data. The geometry represents an absolute, rigid mathematical scaffold. Consequently, the physical derivations are strictly vulnerable to binary falsification. 
+
+The framework is definitively falsified if experimental physics confirms any of the following constraints:
+
+\begin{enumerate}
+    \item \textbf{A Fourth Fermion Generation:} The certified geometry contains exactly three triangles and supports, under the chosen edge-incidence encoding, a candidate 3-generator 2-simplex sector (Theorem~\texttt{second\_betti\_sector\_dimension\_three}). A rigorous derivation of exact fermion-generation counting from a discrete Dirac/index theorem remains open (\S6.3); once established, discovery of a fourth generation would falsify that identification.
+    \item \textbf{Non-Standard Gauge Structures:} The Lean-verified boundary degree sequence generates exactly 1, 3, and 8 isolated degrees of freedom. Discovery of fundamental forces requiring $SU(4)$ or $SU(5)$ at baseline would falsify the graph.
+    \item \textbf{Deviation from (1,3) Lorentzian Signature:} The Lean-verified spacetime submatrix restricts to a $(1,3)$ Lorentzian signature (Theorem~6). Empirical confirmation of fundamentally continuous higher-dimensional spacetime would conflict permanently with this bound.
+\end{enumerate}
+
+If none of these falsification conditions are met, the Vesica Piscis algorithmic scaffold, to our knowledge, remains an unusual zero-parameter mathematical structure exhibiting this combination of certified invariants capable of analytically corresponding to the Standard Model's dimensional and algebraic architecture from compass-and-straightedge first principles.
+
+% ============================================================
+% SECTION 13: CONCLUSION
 % ============================================================
 \section{Conclusion}
 
-The Vesica Piscis construction offers a rigidly unique minimal zero-parameter compass-and-straightedge algorithmic output rendering a foundational 17-point discrete topological manifold. The strict geometrical invariants mapping recursively onto spatial limits structurally mirror properties universally suggestive of the fundamental models of particle physics: tracking specifically identical geometric limits (17 initial field nodes, 3 generational limits forming a rigidly strict $(1,3)$ Lorentzian causal metric structure) naturally bounding interaction fields continuously unassisted by external parameterized adjustments. Rather than completely supplanting formal Lagrangian mechanics unconditionally from first principles, this discrete lattice mathematically isolates the pure invariant limit boundaries dynamically organizing symmetries required for absolute continuous scaling in QFT and Relativity extensions. Whether the fully non-perturbative derivations of these continuum limits decisively establish the final structural constraints to bridge unified topology functionally from quantum bounds remains a continuously compelling geometric necessity open for subsequent exact investigation.
+This paper has presented a rigorous topological analysis of the 17-point Vesica Piscis construction using a hybrid methodology. The Lean~4 theorem prover serves as a computational certificate for the foundational discrete topology: 17 pairwise distinct coordinates in $\mathbb{Q}(\sqrt{3})$, 21 atomic edges, exactly 3 triangles, a strict $\mathbb{Z}/2$ automorphism group, a rigid $\mathbb{Q}(\sqrt{13})$ algebraic field boundary, an emergent $(1,3)$ Lorentzian eigenvalue signature, and a Forman-Ricci curvature invariant of $S = -15$.
+
+Upon this certified baseline, standard analytical physics---representation theory, discrete differential geometry, and spectral graph theory---yields structural correspondences to the complete gauge group architecture of the Standard Model ($U(1) \times SU(2) \times SU(3)$), suggests a candidate three-generation 2-simplex sector whose rigorous connection to fermionic generation counting via an index theorem is identified as the central open problem, proposes a native quark/lepton split, and presents a geometric framework for gravitational curvature. The generational recursion ($Gen_n \to Gen_{n+1}$) motivates a bounded recursive scale ansatz whose first checked iterates remain positive and below the seed radius, geometrically suppressing the ultraviolet and infrared divergences that plague continuous quantum field theories.
+
+The framework is absolutely falsifiable: because no free parameters exist, any single experimental discrepancy (a 4th generation, an $SU(5)$ gauge group, or extra spatial dimensions) would definitively refute the model. Whether the continuum limits of this discrete geometry can be shown to rigorously converge to the full Lagrangian structure of the Standard Model remains an open and compelling question for subsequent mathematical investigation.
 
 % ============================================================
 % REFERENCES

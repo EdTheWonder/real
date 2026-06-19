@@ -1,0 +1,11 @@
+{"plugins": [],
+ "package": "ariori",
+ "options": {"autoImplicit": false},
+ "name": "SpectralRun",
+ "isModule": false,
+ "importArts":
+ {"SpectralFull":
+  ["C:\\Users\\thefa\\Documents\\General - Copy (2)\\ariori-lean\\.lake\\build\\lib\\lean\\SpectralFull.olean"],
+  "ArioriFull":
+  ["C:\\Users\\thefa\\Documents\\General - Copy (2)\\ariori-lean\\.lake\\build\\lib\\lean\\ArioriFull.olean"]},
+ "dynlibs": []}

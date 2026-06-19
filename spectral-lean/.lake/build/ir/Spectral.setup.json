@@ -1,0 +1,7 @@
+{"plugins": [],
+ "package": "spectral",
+ "options": {"autoImplicit": false},
+ "name": "Spectral",
+ "isModule": false,
+ "importArts": {},
+ "dynlibs": []}

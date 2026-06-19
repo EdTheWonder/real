@@ -1,0 +1,29 @@
+\contentsline {part}{I\hspace {1em}Pure Geometry (Theorems)}{3}{part.1}%
+\contentsline {section}{\numberline {1}The Construction}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Motivation}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Axioms}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}The Algorithm}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Generational Recursion}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Note on Computational Verification and the Formalization Boundary}{5}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}Uniqueness and Parsimony}{6}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}The Coordinates}{6}{subsection.1.7}%
+\contentsline {subsection}{\numberline {1.8}The Atomic Spectrum}{6}{subsection.1.8}%
+\contentsline {section}{\numberline {2}The Six Structural Theorems}{7}{section.2}%
+\contentsline {section}{\numberline {3}Node Classification by Geometric Invariants}{10}{section.3}%
+\contentsline {section}{\numberline {4}The Discrete Geometric Lagrangian}{11}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Analytical Generational Scale Ratios}{11}{subsection.4.1}%
+\contentsline {part}{II\hspace {1em}Physical Isomorphisms (Derivations)}{12}{part.2}%
+\contentsline {section}{\numberline {5}Physical Derivations from the Geometric Kernel}{12}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Comprehensive Standard Model Accounting}{12}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Parity Violation and Chiral Asymmetry}{13}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Gravitational Dynamics and Discrete Curvature}{13}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Generational Recursion as the Engine of Dynamics}{13}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Absolute Topological Bounds (UV/IR Cutoffs)}{14}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}The $\mathbb {Q}(\sqrt {13})$ Field Boundary and the Quark/Lepton Split}{14}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}Emergent $(1,3)$ Lorentzian Spacetime}{15}{subsection.5.7}%
+\contentsline {section}{\numberline {6}Spectral Derivations from the Certified Symmetries}{15}{section.6}%
+\contentsline {subsection}{\numberline {6.1}The Geometric Origin of Weak Isospin ($T_3$) and the $10 \oplus 7$ Split}{15}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}The Emergence of the Gauge Group Algebras}{15}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}The Topological Dirac Operator and 3 Generations}{16}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Algorithmic Invariance and Falsifiability}{16}{section.7}%
+\contentsline {section}{\numberline {8}Conclusion}{17}{section.8}%
